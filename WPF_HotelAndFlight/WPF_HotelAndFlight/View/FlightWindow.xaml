@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="FlightWindow" Height="420" Width="800">
     <Grid>
-        <TabControl HorizontalAlignment="Left" Height="389" VerticalAlignment="Top" Width="792" RenderTransformOrigin="0.484,0.502" Background="#FFDFF7F7" SelectionChanged="TabControl_SelectionChanged">
+        <TabControl HorizontalAlignment="Left" Height="389" VerticalAlignment="Top" Width="792" RenderTransformOrigin="0.484,0.502" Background="#FFDFF7F7">
             <TabItem Header="Maskapai" Background="Azure">
                 <Grid Background="#FFF9ECE3" Margin="0,0,7,0">
                     <GroupBox Header="Hotel Detail" HorizontalAlignment="Left" Height="357" VerticalAlignment="Top" Width="195" BorderBrush="#FF4DA0D3" Background="#FFFB8542">

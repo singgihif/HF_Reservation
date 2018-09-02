@@ -8,7 +8,7 @@
         Title="HotelWindow" Height="420" Width="800">
 
     <Grid>
-        <TabControl HorizontalAlignment="Left" Height="389" VerticalAlignment="Top" Width="792" RenderTransformOrigin="0.484,0.502" Background="#FFDFF7F7" SelectionChanged="TabControl_SelectionChanged">
+        <TabControl HorizontalAlignment="Left" Height="389" VerticalAlignment="Top" Width="792" RenderTransformOrigin="0.484,0.502" Background="#FFDFF7F7">
             <TabItem Header="Hotel" Background="Azure">
                 <Grid Background="#FFF9ECE3" Margin="0,0,7,0">
                     <GroupBox Header="Hotel Detail" HorizontalAlignment="Left" Height="357" VerticalAlignment="Top" Width="195" BorderBrush="#FF4DA0D3" Background="#FFFB8542">
@@ -16,22 +16,22 @@
                             <TextBlock Text="Id Hotel"></TextBlock>
                             <TextBox Name="HotelId" Width="70" Margin="-100,0,0,0" IsReadOnly="True"></TextBox>
                             <TextBlock Text="Nama Hotel"></TextBlock>
-                            <TextBox Name="Hotel_name" Width="150" Margin="-20,0,0,0"></TextBox>
+                            <TextBox Name="Nama_Hotel" Width="150" Margin="-20,0,0,0"></TextBox>
                             <TextBlock Text="Alamat"></TextBlock>
-                            <TextBox Name="Alamat_hotel" Width="150" Margin="-20,0,0,0"></TextBox>
+                            <TextBox Name="Alamat" Width="150" Margin="-20,0,0,0"></TextBox>
                             <TextBlock Text="Kota"></TextBlock>
-                            <TextBox Name="City" Width="120" Margin="-50,0,0,0"></TextBox>
+                            <TextBox Name="Kota" Width="120" Margin="-50,0,0,0"></TextBox>
                             <TextBlock Text="Kecamatan"></TextBlock>
-                            <TextBox Name="Kecamatan" Width="120" Margin="-50,0,0,0"></TextBox>
+                            <TextBox Name="Kec" Width="120" Margin="-50,0,0,0"></TextBox>
                             <TextBlock Text="Jalan"></TextBlock>
-                            <TextBox Name="Jalan" Width="150" Margin="-20,0,0,0"></TextBox>
+                            <TextBox Name="Road" Width="150" Margin="-20,0,0,0"></TextBox>
                             <TextBlock Text="Nomor Handphone"></TextBlock>
-                            <TextBox Name="Phone" Width="120" Margin="-50,0,0,0"></TextBox>
+                            <TextBox Name="Hp" Width="120" Margin="-50,0,0,0"></TextBox>
                             <TextBlock Text="Email"></TextBlock>
-                            <TextBox Name="Email" Width="150" Margin="-20,0,0,0"></TextBox>
+                            <TextBox Name="Emails" Width="150" Margin="-20,0,0,0"></TextBox>
                             <TextBlock Text="Manager"></TextBlock>
-                            <TextBox Name="Manager" Width="70" Margin="-100,0,0,0"></TextBox>
-                            <Button x:Name="SimpanButton_Copy" Width="70" Height="20" Margin="6,8,107,0" Background="#FFAFE1F0" Content="SIMPAN"/>
+                            <TextBox Name="Managers" Width="70" Margin="-100,0,0,0"></TextBox>
+                            <Button x:Name="save" Click="save_Click" Width="70" Height="20" Margin="6,8,107,0" Background="#FFAFE1F0" Content="Save"/>
                         </StackPanel>
                     </GroupBox>
 

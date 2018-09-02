@@ -53,3 +53,16 @@ C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelA
 C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\WPF_HotelAndFlight_Content.g.cs
 C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\WPF_HotelAndFlight_MarkupCompile.cache
 C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\WPF_HotelAndFlight_MarkupCompile.lref
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\bin\Debug\WPF_HotelAndFlight.exe
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\bin\Debug\WPF_HotelAndFlight.pdb
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\bin\Debug\EntityFramework.dll
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\bin\Debug\EntityFramework.xml
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\View\FlightWindow.baml
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\View\HotelWindow.baml
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\loginWindow.baml
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\MainWindow.baml
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\WPF_HotelAndFlight.g.resources
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\WPF_HotelAndFlight.Properties.Resources.resources
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\WPF_HotelAndFlight.csproj.GenerateResource.Cache
