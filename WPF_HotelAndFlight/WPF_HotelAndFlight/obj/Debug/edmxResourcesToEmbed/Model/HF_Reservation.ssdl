@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Flight_ReservationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="F_Airport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Airport_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Location" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="F_Coupon">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Date_start" Type="datetime" />
+    <Property Name="Date_end" Type="datetime" />
+    <Property Name="Promo" Type="int" />
+    <Property Name="F_MaskapaiID" Type="int" />
+  </EntityType>
+  <EntityType Name="F_DetailBooking">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="HF_BookingID" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Departure" Type="nvarchar" MaxLength="50" />
+    <Property Name="Destination" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date_flight" Type="datetime" />
+    <Property Name="Subtotal" Type="int" />
+    <Property Name="F_CouponID" Type="int" />
+    <Property Name="F_Maskapai_FlightclassID" Type="int" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="F_Facility">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Facility_name" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="F_Flightclass">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Flightclass_name" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="F_Flightclass_Facility">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="F_FacilityID" Type="int" />
+    <Property Name="F_FlightclassID" Type="int" />
+  </EntityType>
+  <EntityType Name="F_Maskapai">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Maskapai_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Office_address" Type="nvarchar" MaxLength="100" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Manager" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="F_Maskapai_Flightclass">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Price" Type="int" />
+    <Property Name="Seat_available" Type="int" />
+    <Property Name="Image" Type="nvarchar" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="F_FlightclassID" Type="int" />
+    <Property Name="F_MaskapaiID" Type="int" />
+  </EntityType>
+  <EntityType Name="H_Detailbooking">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="qty" Type="int" />
+    <Property Name="Checkin_date" Type="datetime" />
+    <Property Name="Checkout_date" Type="datetime" />
+    <Property Name="HF_BookingID" Type="int" />
+    <Property Name="Subtotal" Type="int" />
+    <Property Name="H_Hotel_RoomtypeID" Type="int" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="H_Facility">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Facllity_Name" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="H_Hotel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Hotel_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Alamat" Type="nvarchar" MaxLength="50" />
+    <Property Name="Kota" Type="nvarchar" MaxLength="50" />
+    <Property Name="Kecamatan" Type="nvarchar" MaxLength="50" />
+    <Property Name="Jalan" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Manager" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="H_Hotel_Roomtype">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Price" Type="int" />
+    <Property Name="Available" Type="int" />
+    <Property Name="Image" Type="nvarchar" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="H_RoomtypeID" Type="int" />
+    <Property Name="H_HotelID" Type="int" />
+  </EntityType>
+  <EntityType Name="H_Payment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Due_date" Type="datetime" />
+    <Property Name="Total" Type="int" />
+    <Property Name="Payment_status" Type="nvarchar" MaxLength="20" />
+    <Property Name="HF_BookingID" Type="int" />
+  </EntityType>
+  <EntityType Name="H_Roomtype">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Roomtype_Name" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="H_Roomtype_Facility">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="H_FacilityID" Type="int" />
+    <Property Name="H_RoomtypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="HF_Booking">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Booking_date" Type="datetime" />
+    <Property Name="HF_CustomerID" Type="int" />
+  </EntityType>
+  <EntityType Name="HF_Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Username" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Location" Type="nvarchar" MaxLength="50" />
+    <Property Name="Passwords" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="HF_User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Fullname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Username" Type="nvarchar" MaxLength="30" />
+    <Property Name="passwords" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="fk_BookingID">
+    <End Role="HF_Booking" Type="Self.HF_Booking" Multiplicity="0..1" />
+    <End Role="F_DetailBooking" Type="Self.F_DetailBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HF_Booking">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="F_DetailBooking">
+        <PropertyRef Name="HF_BookingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_F_CouponID">
+    <End Role="F_Coupon" Type="Self.F_Coupon" Multiplicity="0..1" />
+    <End Role="F_DetailBooking" Type="Self.F_DetailBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="F_Coupon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="F_DetailBooking">
+        <PropertyRef Name="F_CouponID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_F_FacilityID">
+    <End Role="F_Facility" Type="Self.F_Facility" Multiplicity="0..1" />
+    <End Role="F_Flightclass_Facility" Type="Self.F_Flightclass_Facility" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="F_Facility">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="F_Flightclass_Facility">
+        <PropertyRef Name="F_FacilityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_F_Flight_classID">
+    <End Role="F_Flightclass" Type="Self.F_Flightclass" Multiplicity="0..1" />
+    <End Role="F_Maskapai_Flightclass" Type="Self.F_Maskapai_Flightclass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="F_Flightclass">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="F_Maskapai_Flightclass">
+        <PropertyRef Name="F_FlightclassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_F_FlightclassID">
+    <End Role="F_Flightclass" Type="Self.F_Flightclass" Multiplicity="0..1" />
+    <End Role="F_Flightclass_Facility" Type="Self.F_Flightclass_Facility" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="F_Flightclass">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="F_Flightclass_Facility">
+        <PropertyRef Name="F_FlightclassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_F_MaskapaiID">
+    <End Role="F_Maskapai" Type="Self.F_Maskapai" Multiplicity="0..1" />
+    <End Role="F_Maskapai_Flightclass" Type="Self.F_Maskapai_Flightclass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="F_Maskapai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="F_Maskapai_Flightclass">
+        <PropertyRef Name="F_MaskapaiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_H_FacilityID">
+    <End Role="H_Facility" Type="Self.H_Facility" Multiplicity="0..1" />
+    <End Role="H_Roomtype_Facility" Type="Self.H_Roomtype_Facility" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_Facility">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Roomtype_Facility">
+        <PropertyRef Name="H_FacilityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_H_Hotel_RoomtypeID">
+    <End Role="H_Hotel_Roomtype" Type="Self.H_Hotel_Roomtype" Multiplicity="0..1" />
+    <End Role="H_Detailbooking" Type="Self.H_Detailbooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_Hotel_Roomtype">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Detailbooking">
+        <PropertyRef Name="H_Hotel_RoomtypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_H_HotelID">
+    <End Role="H_Hotel" Type="Self.H_Hotel" Multiplicity="0..1" />
+    <End Role="H_Hotel_Roomtype" Type="Self.H_Hotel_Roomtype" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_Hotel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Hotel_Roomtype">
+        <PropertyRef Name="H_HotelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_H_Room_typeID">
+    <End Role="H_Roomtype" Type="Self.H_Roomtype" Multiplicity="0..1" />
+    <End Role="H_Hotel_Roomtype" Type="Self.H_Hotel_Roomtype" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_Roomtype">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Hotel_Roomtype">
+        <PropertyRef Name="H_RoomtypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_H_RoomtypeID">
+    <End Role="H_Roomtype" Type="Self.H_Roomtype" Multiplicity="0..1" />
+    <End Role="H_Roomtype_Facility" Type="Self.H_Roomtype_Facility" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_Roomtype">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Roomtype_Facility">
+        <PropertyRef Name="H_RoomtypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_HF_Booking_ID">
+    <End Role="HF_Booking" Type="Self.HF_Booking" Multiplicity="0..1" />
+    <End Role="H_Payment" Type="Self.H_Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HF_Booking">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Payment">
+        <PropertyRef Name="HF_BookingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_HF_BookingID">
+    <End Role="HF_Booking" Type="Self.HF_Booking" Multiplicity="0..1" />
+    <End Role="H_Detailbooking" Type="Self.H_Detailbooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HF_Booking">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Detailbooking">
+        <PropertyRef Name="HF_BookingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_HF_CustomerID">
+    <End Role="HF_Customer" Type="Self.HF_Customer" Multiplicity="0..1" />
+    <End Role="HF_Booking" Type="Self.HF_Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HF_Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HF_Booking">
+        <PropertyRef Name="HF_CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Maskapai_FlightclassID">
+    <End Role="F_Maskapai_Flightclass" Type="Self.F_Maskapai_Flightclass" Multiplicity="0..1" />
+    <End Role="F_DetailBooking" Type="Self.F_DetailBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="F_Maskapai_Flightclass">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="F_DetailBooking">
+        <PropertyRef Name="F_Maskapai_FlightclassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MaskapaiID">
+    <End Role="F_Maskapai" Type="Self.F_Maskapai" Multiplicity="0..1" />
+    <End Role="F_Coupon" Type="Self.F_Coupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="F_Maskapai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="F_Coupon">
+        <PropertyRef Name="F_MaskapaiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Flight_ReservationModelStoreContainer">
+    <EntitySet Name="F_Airport" EntityType="Self.F_Airport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="F_Coupon" EntityType="Self.F_Coupon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="F_DetailBooking" EntityType="Self.F_DetailBooking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="F_Facility" EntityType="Self.F_Facility" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="F_Flightclass" EntityType="Self.F_Flightclass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="F_Flightclass_Facility" EntityType="Self.F_Flightclass_Facility" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="F_Maskapai" EntityType="Self.F_Maskapai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="F_Maskapai_Flightclass" EntityType="Self.F_Maskapai_Flightclass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="H_Detailbooking" EntityType="Self.H_Detailbooking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="H_Facility" EntityType="Self.H_Facility" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="H_Hotel" EntityType="Self.H_Hotel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="H_Hotel_Roomtype" EntityType="Self.H_Hotel_Roomtype" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="H_Payment" EntityType="Self.H_Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="H_Roomtype" EntityType="Self.H_Roomtype" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="H_Roomtype_Facility" EntityType="Self.H_Roomtype_Facility" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HF_Booking" EntityType="Self.HF_Booking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HF_Customer" EntityType="Self.HF_Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HF_User" EntityType="Self.HF_User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_BookingID" Association="Self.fk_BookingID">
+      <End Role="HF_Booking" EntitySet="HF_Booking" />
+      <End Role="F_DetailBooking" EntitySet="F_DetailBooking" />
+    </AssociationSet>
+    <AssociationSet Name="fk_F_CouponID" Association="Self.fk_F_CouponID">
+      <End Role="F_Coupon" EntitySet="F_Coupon" />
+      <End Role="F_DetailBooking" EntitySet="F_DetailBooking" />
+    </AssociationSet>
+    <AssociationSet Name="fk_F_FacilityID" Association="Self.fk_F_FacilityID">
+      <End Role="F_Facility" EntitySet="F_Facility" />
+      <End Role="F_Flightclass_Facility" EntitySet="F_Flightclass_Facility" />
+    </AssociationSet>
+    <AssociationSet Name="fk_F_Flight_classID" Association="Self.fk_F_Flight_classID">
+      <End Role="F_Flightclass" EntitySet="F_Flightclass" />
+      <End Role="F_Maskapai_Flightclass" EntitySet="F_Maskapai_Flightclass" />
+    </AssociationSet>
+    <AssociationSet Name="fk_F_FlightclassID" Association="Self.fk_F_FlightclassID">
+      <End Role="F_Flightclass" EntitySet="F_Flightclass" />
+      <End Role="F_Flightclass_Facility" EntitySet="F_Flightclass_Facility" />
+    </AssociationSet>
+    <AssociationSet Name="fk_F_MaskapaiID" Association="Self.fk_F_MaskapaiID">
+      <End Role="F_Maskapai" EntitySet="F_Maskapai" />
+      <End Role="F_Maskapai_Flightclass" EntitySet="F_Maskapai_Flightclass" />
+    </AssociationSet>
+    <AssociationSet Name="fk_H_FacilityID" Association="Self.fk_H_FacilityID">
+      <End Role="H_Facility" EntitySet="H_Facility" />
+      <End Role="H_Roomtype_Facility" EntitySet="H_Roomtype_Facility" />
+    </AssociationSet>
+    <AssociationSet Name="fk_H_Hotel_RoomtypeID" Association="Self.fk_H_Hotel_RoomtypeID">
+      <End Role="H_Hotel_Roomtype" EntitySet="H_Hotel_Roomtype" />
+      <End Role="H_Detailbooking" EntitySet="H_Detailbooking" />
+    </AssociationSet>
+    <AssociationSet Name="fk_H_HotelID" Association="Self.fk_H_HotelID">
+      <End Role="H_Hotel" EntitySet="H_Hotel" />
+      <End Role="H_Hotel_Roomtype" EntitySet="H_Hotel_Roomtype" />
+    </AssociationSet>
+    <AssociationSet Name="fk_H_Room_typeID" Association="Self.fk_H_Room_typeID">
+      <End Role="H_Roomtype" EntitySet="H_Roomtype" />
+      <End Role="H_Hotel_Roomtype" EntitySet="H_Hotel_Roomtype" />
+    </AssociationSet>
+    <AssociationSet Name="fk_H_RoomtypeID" Association="Self.fk_H_RoomtypeID">
+      <End Role="H_Roomtype" EntitySet="H_Roomtype" />
+      <End Role="H_Roomtype_Facility" EntitySet="H_Roomtype_Facility" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HF_Booking_ID" Association="Self.fk_HF_Booking_ID">
+      <End Role="HF_Booking" EntitySet="HF_Booking" />
+      <End Role="H_Payment" EntitySet="H_Payment" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HF_BookingID" Association="Self.fk_HF_BookingID">
+      <End Role="HF_Booking" EntitySet="HF_Booking" />
+      <End Role="H_Detailbooking" EntitySet="H_Detailbooking" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HF_CustomerID" Association="Self.fk_HF_CustomerID">
+      <End Role="HF_Customer" EntitySet="HF_Customer" />
+      <End Role="HF_Booking" EntitySet="HF_Booking" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Maskapai_FlightclassID" Association="Self.fk_Maskapai_FlightclassID">
+      <End Role="F_Maskapai_Flightclass" EntitySet="F_Maskapai_Flightclass" />
+      <End Role="F_DetailBooking" EntitySet="F_DetailBooking" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MaskapaiID" Association="Self.fk_MaskapaiID">
+      <End Role="F_Maskapai" EntitySet="F_Maskapai" />
+      <End Role="F_Coupon" EntitySet="F_Coupon" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
