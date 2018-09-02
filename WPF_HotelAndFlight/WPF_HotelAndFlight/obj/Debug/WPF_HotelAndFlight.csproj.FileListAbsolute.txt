@@ -41,3 +41,15 @@ C:\Users\Singgihpratama99\Documents\Visual Studio 2015\Hotel-Flight-Reservation-
 C:\Users\Singgihpratama99\Documents\Visual Studio 2015\Hotel-Flight-Reservation-WPF\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\View\HotelWindow.g.cs
 C:\Users\Singgihpratama99\Documents\Visual Studio 2015\Hotel-Flight-Reservation-WPF\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\View\FlightWindow.baml
 C:\Users\Singgihpratama99\Documents\Visual Studio 2015\Hotel-Flight-Reservation-WPF\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\View\HotelWindow.baml
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\bin\Debug\WPF_HotelAndFlight.exe.config
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\WPF_HotelAndFlight.exe
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\WPF_HotelAndFlight.pdb
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\WPF_HotelAndFlight.csprojResolveAssemblyReference.cache
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\View\FlightWindow.g.cs
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\View\HotelWindow.g.cs
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\loginWindow.g.cs
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\MainWindow.g.cs
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\App.g.cs
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\WPF_HotelAndFlight_Content.g.cs
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\WPF_HotelAndFlight_MarkupCompile.cache
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\WPF_HotelAndFlight_MarkupCompile.lref

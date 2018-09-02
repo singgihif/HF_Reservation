@@ -5,16 +5,90 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_HotelAndFlight"
         mc:Ignorable="d"
-        Title="FlightWindow" Height="720" Width="1200">
+        Title="FlightWindow" Height="420" Width="800">
     <Grid>
-        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="1" VerticalAlignment="Top" Width="100">
-            <TabItem Header="TabItem" HorizontalAlignment="Left" Width="100">
-                <Grid Background="#FFE5E5E5"/>
+        <TabControl HorizontalAlignment="Left" Height="389" VerticalAlignment="Top" Width="792" RenderTransformOrigin="0.484,0.502" Background="#FFDFF7F7" SelectionChanged="TabControl_SelectionChanged">
+            <TabItem Header="Maskapai" Background="Azure">
+                <Grid Background="#FFF9ECE3" Margin="0,0,7,0">
+                    <GroupBox Header="Hotel Detail" HorizontalAlignment="Left" Height="357" VerticalAlignment="Top" Width="195" BorderBrush="#FF4DA0D3" Background="#FFFB8542">
+                        <StackPanel Orientation="Vertical" Margin="0,0,0,-56">
+                            <TextBlock Text="Id Maskapai"></TextBlock>
+                            <TextBox Name="MaskapaiId" Width="70" Margin="-100,0,0,0" IsReadOnly="True"></TextBox>
+                            <TextBlock Text="Nama Maskapai"></TextBlock>
+                            <TextBox Name="Maskapai_name" Width="150" Margin="-20,0,0,0"></TextBox>
+                            <TextBlock Text="Alamat"></TextBlock>
+                            <TextBlock Text="Nomor Telepon"></TextBlock>
+                            <TextBox Name="Phone" Width="120" Margin="-50,0,0,0"></TextBox>
+                            <TextBlock Text="Email"></TextBlock>
+                            <TextBox Name="Email" Width="150" Margin="-20,0,0,0"></TextBox>
+                            <TextBlock Text="Manager"></TextBlock>
+                            <TextBox Name="Manager" Width="70" Margin="-100,0,0,0"></TextBox>
+                            <Button x:Name="SimpanMaskapai" Width="70" Height="20" Margin="6,120,107,0" Background="#FFAFE1F0" Content="SIMPAN"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <DataGrid Name="MaskapaiGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="240" Margin="200,10,0,0" VerticalAlignment="Top" Width="575" Background="#FFF5F4F4" BorderBrush="#FFF9FBFD">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id Maskapai"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Nama Maskapai"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Alamat" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="No.Telepon"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Email"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Manager"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <GroupBox Header="Action" HorizontalAlignment="Left" Height="75" VerticalAlignment="Top" Width="575" Margin="200,282,0,0" Background="#FFFFB87C">
+                        <StackPanel Orientation="Horizontal">
+                            <Button Name="UbahMaskapai" Width="150" Height="30" Margin="40,0,0,0" Background="LightYellow" Content="UBAH"></Button>
+                            <Button x:Name="HapusMaskapai" Width="150" Height="30" Margin="35,12,0,11" Background="#FFF74848" Content="HAPUS"/>
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
             </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+
+            <TabItem Header="Jenis Maskapai" Background="Azure">
+                <Grid Background="#FFF9ECE3" Margin="0,0,7,0">
+                    <GroupBox Header="Jenis Maskapai" HorizontalAlignment="Left" Height="357" VerticalAlignment="Top" Width="195" BorderBrush="#FF4DA0D3" Background="#FFFB8542">
+                        <StackPanel Orientation="Vertical" Margin="0,0,0,-56">
+                            <TextBlock Text="Id Jenis Maskapai"></TextBlock>
+                            <TextBox Name="MaskapaiclassId" Width="70" Margin="-100,0,0,0" IsReadOnly="True"></TextBox>
+                            <TextBlock Text="Nama Maskapai"></TextBlock>
+                            <TextBox Name="Jenis_Maskapai" Width="150" Margin="-20,0,0,0"></TextBox>
+                            <TextBlock Text="Kelas"></TextBlock>
+                            <TextBox Name="Kelas" Width="120" Margin="-50,0,0,0"></TextBox>
+                            <TextBlock Text="Harga"></TextBlock>
+                            <TextBox Name="Harga" Width="150" Margin="-20,0,0,0"></TextBox>
+                            <TextBlock Text="Kapasitas"></TextBlock>
+                            <TextBox Name="Seat" Width="70" Margin="-100,0,0,0"></TextBox>
+                            <TextBlock Text="Deskripsi"></TextBlock>
+                            <TextBox Name="Deskripsi" Width="70" Margin="-100,0,0,0"></TextBox>
+                            <TextBlock Text="Gambar"></TextBlock>
+                            <TextBox Name="Gambar" Width="70" Margin="-100,0,0,0"></TextBox>
+                            <Button x:Name="SimpankelasMaskapai" Width="70" Height="20" Margin="6,70,107,0" Background="#FFAFE1F0" Content="SIMPAN"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <DataGrid Name="MaskapaiClassGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="240" Margin="200,10,0,0" VerticalAlignment="Top" Width="575" Background="#FFF5F4F4" BorderBrush="#FFF9FBFD">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id Jenis Maskapai"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Nama Maskapai"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Kelas" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Harga"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Kapasitas"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Deskripsi"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Gambar"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <GroupBox Header="Action" HorizontalAlignment="Left" Height="75" VerticalAlignment="Top" Width="575" Margin="200,282,0,0" Background="#FFFFB87C">
+                        <StackPanel Orientation="Horizontal">
+                            <Button Name="UbahButton" Width="150" Height="30" Margin="40,0,0,0" Background="LightYellow" Content="UBAH"></Button>
+                            <Button x:Name="HapusButton" Width="150" Height="30" Margin="35,12,0,11" Background="#FFF74848" Content="HAPUS"/>
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
             </TabItem>
         </TabControl>
-
     </Grid>
 </Window>

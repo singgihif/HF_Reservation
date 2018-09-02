@@ -8,9 +8,9 @@
         Title="HotelWindow" Height="420" Width="800">
 
     <Grid>
-        <TabControl HorizontalAlignment="Left" Height="389" VerticalAlignment="Top" Width="800" RenderTransformOrigin="0.484,0.502" Background="#FFDFF7F7" SelectionChanged="TabControl_SelectionChanged" Margin="0,0,-8,0">
+        <TabControl HorizontalAlignment="Left" Height="389" VerticalAlignment="Top" Width="792" RenderTransformOrigin="0.484,0.502" Background="#FFDFF7F7" SelectionChanged="TabControl_SelectionChanged">
             <TabItem Header="Hotel" Background="Azure">
-                <Grid Background="#FFF9ECE3">
+                <Grid Background="#FFF9ECE3" Margin="0,0,7,0">
                     <GroupBox Header="Hotel Detail" HorizontalAlignment="Left" Height="357" VerticalAlignment="Top" Width="195" BorderBrush="#FF4DA0D3" Background="#FFFB8542">
                         <StackPanel Orientation="Vertical" Margin="0,0,0,-56">
                             <TextBlock Text="Id Hotel"></TextBlock>
@@ -95,7 +95,7 @@
                     <GroupBox Header="Action" HorizontalAlignment="Left" Height="75" VerticalAlignment="Top" Width="575" Margin="200,281,0,0" Background="#FFFFB87C">
                         <StackPanel Orientation="Horizontal">
                             <Button x:Name="Ubahtipe" Width="150" Height="30" Margin="40,0,0,0" Background="LightYellow" Content="UBAH"/>
-                            <Button x:Name="Hapustipe" Width="150" Height="30" Margin="35,0,0,0" Background="PaleVioletRed" Content="HAPUS"/>
+                            <Button x:Name="Hapustipe" Width="150" Height="30" Margin="35,0,0,0" Background="#FFF74848" Content="HAPUS"/>
                         </StackPanel>
                     </GroupBox>
                 </Grid>
@@ -123,13 +123,12 @@
                     </GroupBox>
                     <DataGrid Name="DetailBookingGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="240" Margin="200,10,0,0" VerticalAlignment="Top" Width="575" Background="#FFFBFFFF" BorderBrush="#FFF9FBFD">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Id Jenis Kamar"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Id Booking"></DataGridTextColumn>
                             <DataGridTextColumn Header="Nama Hotel"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Tipe Kamar"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Harga"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Stok Kamar"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Tampilan Kamar"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Deskripsi Kamar"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Check-Out"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Check-In"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Jumlah Kamar"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Subtotal"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
