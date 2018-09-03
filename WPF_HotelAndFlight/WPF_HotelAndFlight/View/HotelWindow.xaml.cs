@@ -29,7 +29,6 @@ namespace WPF_HotelAndFlight
         private void save_Click(object sender, RoutedEventArgs e)
         {
             A_HotelController controller = new A_HotelController();
-            int HotelID = Convert.ToInt16(HotelId.Text);
             string Hotel_name = Nama_Hotel.Text;
             string Alamat_hotel = Alamat.Text;
             string City = Kota.Text;
@@ -38,7 +37,7 @@ namespace WPF_HotelAndFlight
             string phone = Hp.Text;
             string Email = Emails.Text;
             string Manager = Managers.Text;
-            controller.InsertHotel(HotelID, Hotel_name, Alamat_hotel, City, Kecamatan, Jalan, phone, Email, Manager);
+            controller.InsertHotel(Hotel_name, Alamat_hotel, City, Kecamatan, Jalan, phone, Email, Manager);
             MessageBox.Show("Register Success", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Hide();
             MainWindow hasil = new MainWindow();

@@ -62,7 +62,11 @@
 
             <TabItem Header="Tipe Hotel" Background="Azure">
                 <Grid Background="#FFF5E8E0" Margin="0,0,0,5">
-                    <GroupBox Header="Tipe Hotel" HorizontalAlignment="Left" Height="357" VerticalAlignment="Top" Width="195" BorderBrush="#FF4DA0D3" Background="#FFFB8542">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="148*"/>
+                        <ColumnDefinition Width="639*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Header="Tipe Hotel" HorizontalAlignment="Left" Height="357" VerticalAlignment="Top" Width="195" BorderBrush="#FF4DA0D3" Background="#FFFB8542" Grid.ColumnSpan="2" Margin="0,0,0,-1">
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="Id Tipe Hotel"/>
                             <TextBox Name="Id_Type_Hotel" Width="70" Margin="-100,0,0,0" IsReadOnly="True"></TextBox>
@@ -81,7 +85,7 @@
                             <Button x:Name="SimpanTipe" Width="70" Height="20" Margin="6,40,107,0" Background="#FFAFE1F0" Content="SIMPAN"/>
                         </StackPanel>
                     </GroupBox>
-                    <DataGrid Name="TypeHotelGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="240" Margin="200,10,0,0" VerticalAlignment="Top" Width="575" Background="#FFFBFFFF" BorderBrush="#FFF9FBFD">
+                    <DataGrid Name="TypeHotelGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="240" Margin="52.5,10,0,0" VerticalAlignment="Top" Width="575" Background="#FFFBFFFF" BorderBrush="#FFF9FBFD" Grid.Column="1">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id Jenis Kamar"></DataGridTextColumn>
                             <DataGridTextColumn Header="Nama Hotel"></DataGridTextColumn>
@@ -92,7 +96,7 @@
                             <DataGridTextColumn Header="Deskripsi Kamar"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <GroupBox Header="Action" HorizontalAlignment="Left" Height="75" VerticalAlignment="Top" Width="575" Margin="200,281,0,0" Background="#FFFFB87C">
+                    <GroupBox Header="Action" HorizontalAlignment="Left" Height="75" VerticalAlignment="Top" Width="575" Margin="52.5,281,0,0" Background="#FFFFB87C" Grid.Column="1">
                         <StackPanel Orientation="Horizontal">
                             <Button x:Name="Ubahtipe" Width="150" Height="30" Margin="40,0,0,0" Background="LightYellow" Content="UBAH"/>
                             <Button x:Name="Hapustipe" Width="150" Height="30" Margin="35,0,0,0" Background="#FFF74848" Content="HAPUS"/>

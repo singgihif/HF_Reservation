@@ -12,11 +12,10 @@ namespace WPF_HotelAndFlight.Controller
         Flight_ReservationEntities1 _context = new Flight_ReservationEntities1();
 
         // =========================================== INSERT =============================================
-        public void InsertHotel(int HotelID, string Hotel_name, string Alamat_hotel, string  City, string Kecamatan, string Jalan, string phone, string email, string Manager)
+        public void InsertHotel(string Hotel_name, string Alamat_hotel, string  City, string Kecamatan, string Jalan, string phone, string email, string Manager)
         {
             H_Hotel call = new H_Hotel();
             {
-                call.Id = HotelID;
                 call.Hotel_Name = Hotel_name;
                 call.Alamat = Alamat_hotel;
                 call.Kota = City;
