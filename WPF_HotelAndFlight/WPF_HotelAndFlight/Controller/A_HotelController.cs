@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using WPF_HotelAndFlight.Model;
 
 namespace WPF_HotelAndFlight.Controller
@@ -10,6 +11,8 @@ namespace WPF_HotelAndFlight.Controller
     class A_HotelController
     {
         Flight_ReservationEntities1 _context = new Flight_ReservationEntities1();
+        private string v1;
+        private string v2;
 
         // =========================================== INSERT =============================================
         public void InsertHotel(string Hotel_name, string Alamat_hotel, string  City, string Kecamatan, string Jalan, string phone, string email, string Manager)
@@ -29,14 +32,21 @@ namespace WPF_HotelAndFlight.Controller
             {
                 _context.H_Hotel.Add(call);
                 var result = _context.SaveChanges();
+
             }
             catch (Exception ex)
             {
                 System.Console.Write(ex.InnerException);
             }
         }
+
+        public void ViewHotel(string Hotel_name, string Alamat_hotel, string City, string Kecamatan, string Jalan, string phone, string email, string Manager)
+        {
+
+
+        }
         // =========================================== READ =============================================
-        public List<H_Hotel> GetAllHotel()
+        public List<H_Hotel> HotelGrid()
         {
             var getalls = _context.H_Hotel.ToList();
             foreach (H_Hotel user in getalls)

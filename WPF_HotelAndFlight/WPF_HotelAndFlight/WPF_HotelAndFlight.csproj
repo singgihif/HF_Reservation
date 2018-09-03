@@ -66,11 +66,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="View\FlightWindow.xaml">
+    <Page Include="FlightWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\HotelWindow.xaml">
+    <Page Include="HotelWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -158,10 +158,10 @@
     <Compile Include="Model\Role.cs">
       <DependentUpon>FlightHotelReservation.tt</DependentUpon>
     </Compile>
-    <Compile Include="View\FlightWindow.xaml.cs">
+    <Compile Include="FlightWindow.xaml.cs">
       <DependentUpon>FlightWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\HotelWindow.xaml.cs">
+    <Compile Include="HotelWindow.xaml.cs">
       <DependentUpon>HotelWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="loginWindow.xaml.cs">
@@ -231,6 +231,9 @@
       <DependentUpon>FlightHotelReservation.edmx</DependentUpon>
       <LastGenOutput>FlightHotelReservation.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

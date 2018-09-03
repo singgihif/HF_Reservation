@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Singgihpratama99\Documents\Visual Studio 2015\Hotel-Flight-Reservation-WPF\WPF_HotelAndFlight\WPF_HotelAndFlight\Model\FlightHotelReservation.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\Model\FlightHotelReservation.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
