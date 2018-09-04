@@ -87,7 +87,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controller\A_HotelController.cs" />
-    <Compile Include="Controller\A_Hotel_Roomtype.cs" />
+    <Compile Include="Controller\A_Hotel_RoomtypeController.cs" />
+    <Compile Include="Controller\A_Roomtype_FacilityController.cs" />
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Model\FlightHotelReservation.Context.cs">
       <AutoGen>True</AutoGen>

@@ -121,7 +121,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Price" Type="int" />
           <Property Name="Available" Type="int" />
           <Property Name="Image" Type="nvarchar" MaxLength="255" />
@@ -150,7 +150,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="H_FacilityID" Type="int" />
           <Property Name="H_RoomtypeID" Type="int" />
         </EntityType>

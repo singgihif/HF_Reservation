@@ -40,6 +40,7 @@ namespace WPF_HotelAndFlight.Controller
             }
         }
 
+
         public void ViewHotel(string Hotel_name, string Alamat_hotel, string City, string Kecamatan, string Jalan, string phone, string email, string Manager)
         {
 

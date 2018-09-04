@@ -9,9 +9,9 @@
 
     <Grid>
         <TabControl HorizontalAlignment="Left" Height="389" VerticalAlignment="Top" Width="792" RenderTransformOrigin="0.484,0.502" Background="#FFDFF7F7">
-            <TabItem Header="Hotel" Background="Azure">
+            <TabItem x:Name="thotel" Header="Hotel" Background="Azure">
                 <Grid Background="#FFF9ECE3" Margin="0,0,7,0">
-                    <GroupBox Header="Hotel Detail" HorizontalAlignment="Left" Height="357" VerticalAlignment="Top" Width="195" BorderBrush="#FF4DA0D3" Background="#FFFB8542">
+                    <GroupBox Header="Hotel_Detail" HorizontalAlignment="Left" Height="357" VerticalAlignment="Top" Width="195" BorderBrush="#FF4DA0D3" Background="#FFFB8542">
                         <StackPanel Orientation="Vertical" Margin="2,0,-2,-43">
                             <TextBlock Text="Id Hotel"/>
                             <TextBox x:Name="HotelId" Width="70" Margin="-100,0,0,0" IsReadOnly="True"/>
@@ -31,14 +31,12 @@
                             <TextBox x:Name="Emails" Width="150" Margin="-20,0,0,0"/>
                             <TextBlock Text="Manager"/>
                             <TextBox x:Name="Managers" Width="70" Margin="-100,0,0,0"/>
-                            <Button x:Name="save" Click="save_Click" Width="70" Height="20" Margin="6,8,107,0" Background="#FFAFE1F0" Content="Save"/>
                         </StackPanel>
                     </GroupBox>
-
-                    <DataGrid Name="HotelGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="240" Margin="200,10,0,0" VerticalAlignment="Top" Width="575" Background="#FFF5F4F4" BorderBrush="#FFF9FBFD">
+                    <DataGrid x:Name="HotelGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="240" Margin="200,14,0,0" VerticalAlignment="Top" Width="575" Background="#FFF5F4F4" BorderBrush="#FFF9FBFD" SelectionChanged="HotelGrid_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Nama Hotel" Binding="{Binding Hotel_Name}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Nama_Hotel" Binding="{Binding Hotel_Name}"></DataGridTextColumn>
                             <DataGridTextColumn Header="Alamat" Binding="{Binding Alamat}"></DataGridTextColumn>
                             <DataGridTextColumn Header="Kota" Binding="{Binding Kota}"></DataGridTextColumn>
                             <DataGridTextColumn Header="Kecamatan" Binding="{Binding Kecamatan}"></DataGridTextColumn>
@@ -49,10 +47,12 @@
                         </DataGrid.Columns>
                     </DataGrid>
 
+                    
                     <GroupBox Header="Action" HorizontalAlignment="Left" Height="75" VerticalAlignment="Top" Width="575" Margin="200,282,0,0" Background="#FFFFB87C">
                         <StackPanel Orientation="Horizontal">
-                            <Button Name="UbahButton" Width="150" Height="30" Margin="40,0,0,0" Background="LightYellow" Content="UBAH"></Button>
-                            <Button x:Name="HapusButton" Width="150" Height="30" Margin="35,12,0,11" Background="#FFF74848" Content="HAPUS"/>
+                            <Button x:Name="save" Click="save_Click" Width="150" Height="30" Margin="40,12,0,11" Background="#FF6AB1EC" Content="SIMPAN"/>
+                            <Button x:Name="ubah" Click="update_Click" Width="150" Height="30" Margin="40,0,0,0" Background="#FFECEC80" Content="UBAH"></Button>
+                            <Button x:Name="HapusButton" Width="150" Height="30" Margin="35,12,0,11" Background="#FFF74848" Content="HAPUS" Click="HapusButton_Click"/>
                         </StackPanel>
                     </GroupBox>
                 </Grid>
@@ -70,41 +70,69 @@
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="Id Tipe Hotel"/>
                             <TextBox Name="Id_Type_Hotel" Width="70" Margin="-100,0,0,0" IsReadOnly="True"></TextBox>
-                            <TextBlock Text="Id Hotel"></TextBlock>
-                            <TextBox Name="Id_Hotel" Width="70" Margin="-100,0,0,0" IsReadOnly="True"></TextBox>
-                            <TextBlock Text="Id Tipe Kamar"></TextBlock>
-                            <TextBox Name="Id_Tipekamar" Width="70" Margin="-100,0,0,0" IsReadOnly="True"></TextBox>
                             <TextBlock Text="Harga"></TextBlock>
-                            <TextBox Name="Harga" Width="70" Margin="-100,0,0,0" IsReadOnly="True"></TextBox>
+                            <TextBox Name="Hargatext" Width="70" Margin="-100,0,0,0"></TextBox>
                             <TextBlock Text="Kamar Tersedia"></TextBlock>
-                            <TextBox Name="stok" Width="70" Margin="-100,0,0,0" IsReadOnly="True"></TextBox>
+                            <TextBox Name="stoktext" Width="70" Margin="-100,0,0,0"></TextBox>
                             <TextBlock Text="Tampilan Kamar"></TextBlock>
-                            <TextBox Name="Fotokamar" Width="150" Margin="-20,0,0,0" IsReadOnly="True"></TextBox>
+                            <TextBox Name="Fototext" Width="150" Margin="-20,0,0,0"></TextBox>
                             <TextBlock Text="Deskripsi Kamar"></TextBlock>
-                            <TextBox Name="Deskripsi" Width="150" Height="50" Margin="-20,0,0,0"></TextBox>
-                            <Button x:Name="SimpanTipe" Width="70" Height="20" Margin="6,40,107,0" Background="#FFAFE1F0" Content="SIMPAN"/>
+                            <TextBox Name="Deskripsitext" Width="150" Height="50" Margin="-20,0,0,0"></TextBox>
+                            <TextBlock Text="Nama Hotel"></TextBlock>
+                            <ComboBox Name="Id_Hotelbox" Width="70" Margin="-100,0,0,0" IsReadOnly="True"></ComboBox>
+                            <TextBlock Text="Tipe Kamar"></TextBlock>
+                            <ComboBox Name="Id_Tipekamarbox" Width="70" Margin="-100,0,0,0" IsReadOnly="True"></ComboBox>
                         </StackPanel>
                     </GroupBox>
                     <DataGrid Name="TypeHotelGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="240" Margin="52.5,10,0,0" VerticalAlignment="Top" Width="575" Background="#FFFBFFFF" BorderBrush="#FFF9FBFD" Grid.Column="1">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Id Jenis Kamar"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Nama Hotel"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Tipe Kamar"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Harga"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Stok Kamar"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Tampilan Kamar"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Deskripsi Kamar"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Id Jenis Kamar" Binding="{Binding Id}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Harga" Binding="{Binding Price}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Stok Kamar" Binding="{Binding Available}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Tampilan Kamar" Binding="{Binding Image}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Deskripsi Kamar" Binding="{Binding Description}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Nama Hotel" Binding="{Binding H_Hotel.Hotel_Name}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Tipe Kamar" Binding="{Binding H_Roomtype.Roomtype_Name}"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                     <GroupBox Header="Action" HorizontalAlignment="Left" Height="75" VerticalAlignment="Top" Width="575" Margin="52.5,281,0,0" Background="#FFFFB87C" Grid.Column="1">
                         <StackPanel Orientation="Horizontal">
-                            <Button x:Name="Ubahtipe" Width="150" Height="30" Margin="40,0,0,0" Background="LightYellow" Content="UBAH"/>
-                            <Button x:Name="Hapustipe" Width="150" Height="30" Margin="35,0,0,0" Background="#FFF74848" Content="HAPUS"/>
+                            <Button x:Name="saveTipe" Click="savetipe_Click" Width="150" Height="30" Margin="40,12,0,11" Background="#FF6AB1EC" Content="SIMPAN"/>
+                            <Button x:Name="ubahTipe" Click="updatetipe_Click" Width="150" Height="30" Margin="40,0,0,0" Background="#FFECEC80" Content="UBAH"></Button>
+                            <Button x:Name="HapusTipe" Click="hapustipe_Click" Width="150" Height="30" Margin="35,12,0,11" Background="#FFF74848" Content="HAPUS"/>
                         </StackPanel>
                     </GroupBox>
                 </Grid>
             </TabItem>
 
+            <TabItem Header="Fasilitas Kamar" Background="Azure">
+                <Grid Background="#FFF9ECE3">
+                    <GroupBox Header="Fasilitas Kamar" HorizontalAlignment="Left" Height="351" VerticalAlignment="Top" Width="195" BorderBrush="#FF4DA0D3" Background="#FFFB8542">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Id Fasillitas Kamar"></TextBlock>
+                            <TextBox Name="Id_Fkamartext" Width="70" Margin="-100,0,0,0" IsReadOnly="True"></TextBox>
+                            <TextBlock Text="Fasilitas"></TextBlock>
+                            <ComboBox Name="Fkamarbox" Width="150" Margin="6,0,27,0" IsReadOnly="True"></ComboBox>
+                            <TextBlock Text="Nama Kamar"></TextBlock>
+                            <ComboBox Name="Nkamarbox" Width="150" Margin="-20,0,0,0" IsReadOnly="True"></ComboBox>
+                        </StackPanel>
+                    </GroupBox>
+                    <DataGrid Name="FkamarGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="240" Margin="200,10,0,0" VerticalAlignment="Top" Width="575" Background="#FFFBFFFF" BorderBrush="#FFF9FBFD" SelectionChanged="FkamarGrid_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id Fasilitas Kamar" Binding="{Binding Id}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Nama Kamar" Binding="{Binding H_Facility.Facllity_Name}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Fasilitas" Binding="{Binding H_Roomtype.Roomtype_Name}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <GroupBox Header="Action" HorizontalAlignment="Left" Height="75" VerticalAlignment="Top" Width="575" Margin="200,276,0,0" Background="#FFFFB87C">
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="savefkamar" Click="savefkamar_Click" Width="150" Height="30" Margin="40,12,0,11" Background="#FF6AB1EC" Content="SIMPAN"/>
+                            <Button x:Name="ubahfkamar" Click="updatefkamar_Click" Width="150" Height="30" Margin="40,0,0,0" Background="#FFECEC80" Content="UBAH"></Button>
+                            <Button x:Name="Hapusfkamar" Click="Hapusfkamar_Click" Width="150" Height="30" Margin="35,12,0,11" Background="#FFF74848" Content="HAPUS" />
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
 
             <TabItem Header="Detail Booking" Background="Azure">
                 <Grid Background="#FFF9ECE3">
@@ -122,7 +150,6 @@
                             <TextBox Name="Quality" Width="70" Margin="-100,0,0,0" IsReadOnly="True"></TextBox>
                             <TextBlock Text="SubTotal"></TextBlock>
                             <TextBox Name="subtotal" Width="70" Margin="-100,0,0,0" IsReadOnly="True"></TextBox>
-                            <Button x:Name="SimpanBooking" Width="70" Height="20" Margin="6,100,107,0" Background="#FFAFE1F0" Content="SIMPAN"/>
                         </StackPanel>
                     </GroupBox>
                     <DataGrid Name="DetailBookingGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="240" Margin="200,10,0,0" VerticalAlignment="Top" Width="575" Background="#FFFBFFFF" BorderBrush="#FFF9FBFD">
@@ -137,6 +164,7 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
+
         </TabControl>
     </Grid>
 </Window>

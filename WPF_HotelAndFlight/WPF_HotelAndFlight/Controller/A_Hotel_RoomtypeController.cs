@@ -7,11 +7,34 @@ using WPF_HotelAndFlight.Model;
 
 namespace WPF_HotelAndFlight.Controller
 {
-    class A_Hotel_Roomtype
+    class A_Hotel_RoomtypeController
     {
         Flight_ReservationEntities1 _context = new Flight_ReservationEntities1();
 
         // =========================================== INSERT =============================================
+        public void InsertTipeHotel(int Harga, int Stok, string Gambar, string Deskripsi, int RoomtypeID, int HotelID)
+        {
+            H_Hotel_Roomtype call = new H_Hotel_Roomtype();
+            {
+                call.Price = Harga;
+                call.Available = Stok;
+                call.Image = Gambar;
+                call.Description = Deskripsi;
+                call.H_RoomtypeID = RoomtypeID;
+                call.H_HotelID = HotelID;
+            };
+            try
+            {
+                _context.H_Hotel_Roomtype.Add(call);
+                var result = _context.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+                System.Console.Write(ex.InnerException);
+            }
+        }
+
         public void InsertTypehotel()
         {
             Console.Clear();
