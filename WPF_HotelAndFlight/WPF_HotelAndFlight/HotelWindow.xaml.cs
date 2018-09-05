@@ -27,6 +27,8 @@ namespace WPF_HotelAndFlight
         public HotelWindow()
         {
             InitializeComponent();
+            viewFkamarGrid(FkamarGrid);
+
         }
 
         private void clearhotel()
@@ -51,7 +53,12 @@ namespace WPF_HotelAndFlight
 
         private void cleartipehotel()
         {
-
+            Hargatext.Text = "";
+            stoktext.Text = "";
+            Fototext.Text = "";
+            Deskripsitext.Text = "";
+            Id_Hotelbox.Text = "";
+            Id_Tipekamarbox.Text = "";
         }
 
         //=====================================save================================================
@@ -92,9 +99,9 @@ namespace WPF_HotelAndFlight
             int Stok = Convert.ToInt32(stoktext.Text);
             string Gambar = Fototext.Text;
             string Deskripsi = Deskripsitext.Text;
+            int H_RoomtypeID = Convert.ToInt32(Id_Tipekamarbox.SelectedValue);
             int H_HotelID = Convert.ToInt32(Id_Hotelbox.SelectedValue);
-            int H_Roomtype = Convert.ToInt32(Id_Tipekamarbox.SelectedValue);
-            contr.InsertTipeHotel(Harga, Stok, Gambar, Deskripsi, H_HotelID, H_Roomtype);
+            contr.InsertTipeHotel(Harga, Stok, Gambar, Deskripsi, H_RoomtypeID, H_HotelID);
             MessageBox.Show("Register Success", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Hide();
             HotelWindow hasil = new HotelWindow();
@@ -106,9 +113,22 @@ namespace WPF_HotelAndFlight
             DG.ItemsSource = _context.H_Hotel.OrderBy(x => x.Id).ToList();
         }
 
+        /*private void viewFkamarGrid(DataGrid DG)
+        {
+            var Fkamar = from r in _context.H_Roomtype.ToList() join rf in _context.H_Roomtype_Facility.ToList()
+                         on r.Id equals rf.H_RoomtypeID join f in _context.H_Facility.ToList()
+                         on rf.H_FacilityID equals f.Id
+                         select r;
+            DG.ItemsSource = Fkamar.ToList();
+        }*/
         private void viewFkamarGrid(DataGrid DG)
         {
             DG.ItemsSource = _context.H_Roomtype_Facility.OrderBy(x => x.Id).ToList();
+        }
+
+        private void viewHotelTypeGrid(DataGrid DG)
+        {
+            DG.ItemsSource = _context.H_Hotel_Roomtype.OrderBy(x => x.Id).ToList();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -117,6 +137,7 @@ namespace WPF_HotelAndFlight
             LoadIdComboBox();
             viewFkamarGrid(FkamarGrid);
             LoadIdTRComboBox();
+            viewHotelTypeGrid(TypeHotelGrid);
         }
 
         private H_Hotel SearchByIdHotel(int id)
@@ -136,6 +157,17 @@ namespace WPF_HotelAndFlight
             if (dataid == null)
             {
                 MessageBox.Show("Id " + Id_Fkamartext + " not found", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            return dataid;
+        }
+
+        private H_Hotel_Roomtype SearchByIdTipehotel(int id)
+        {
+            var dataid = _context.H_Hotel_Roomtype.Find(id);
+            if (dataid == null)
+            {
+                MessageBox.Show("Id " + Id_Tipehotel + " not found", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
             return dataid;
@@ -184,6 +216,33 @@ namespace WPF_HotelAndFlight
                 Fkamarbox.Text = data2;
                 string data3 = (FkamarGrid.SelectedCells[2].Column.GetCellContent(item) as TextBlock).Text;
                 Nkamarbox.Text = data3;
+            }
+            catch (Exception ex)
+            {
+                System.Console.Write(ex.InnerException);
+            }
+        }
+
+        private void TypeHotelGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                object item = TypeHotelGrid.SelectedItem;
+
+                string data1 = (TypeHotelGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                Id_Tipehotel.Text = data1;
+                string data2 = (TypeHotelGrid.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
+                Hargatext.Text = data2;
+                string data3 = (TypeHotelGrid.SelectedCells[2].Column.GetCellContent(item) as TextBlock).Text;
+                stoktext.Text = data3;
+                string data4 = (TypeHotelGrid.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text;
+                Fototext.Text = data4;
+                string data5 = (TypeHotelGrid.SelectedCells[4].Column.GetCellContent(item) as TextBlock).Text;
+                Deskripsitext.Text = data5;
+                string data6 = (TypeHotelGrid.SelectedCells[5].Column.GetCellContent(item) as TextBlock).Text;
+                Id_Hotelbox.Text = data6;
+                string data7 = (TypeHotelGrid.SelectedCells[6].Column.GetCellContent(item) as TextBlock).Text;
+                Id_Tipekamarbox.Text = data7;
             }
             catch (Exception ex)
             {
@@ -268,6 +327,45 @@ namespace WPF_HotelAndFlight
             }
         }
 
+        private void updatetipe_Click(object sender, RoutedEventArgs e)
+        {
+            object item = TypeHotelGrid.SelectedItem;
+            string temp_id = (TypeHotelGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+
+            int id = Convert.ToInt32(temp_id);
+
+            H_Hotel_Roomtype datax = SearchByIdTipehotel(id);
+            datax.Price = Convert.ToInt32(Hargatext.Text);
+            datax.Available = Convert.ToInt16(stoktext.Text);
+            datax.Image = Fototext.Text;
+            datax.Description = Deskripsitext.Text;
+            datax.H_HotelID = Convert.ToInt32(Id_Hotelbox.SelectedValue);
+            datax.H_RoomtypeID = Convert.ToInt32(Id_Tipekamarbox.SelectedValue);
+
+            try
+            {
+                _context.Entry(datax).State = System.Data.Entity.EntityState.Modified;
+                _context.SaveChanges();
+                clearhotel();
+                this.viewHotelTypeGrid(TypeHotelGrid);
+                MessageBox.Show("Update Success !", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var eve in ex.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+        }
+
         //=======================================Delete=================================================================================
         private void HapusButton_Click(object sender, RoutedEventArgs e)
         {
@@ -331,14 +429,23 @@ namespace WPF_HotelAndFlight
             Id_Hotelbox.ItemsSource = _context.H_Hotel.ToList();
         }
 
-        private void updatetipe_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void hapustipe_Click(object sender, RoutedEventArgs e)
         {
+            if (MessageBox.Show("Are You Sure ?", "Information", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+            {
+                object item = TypeHotelGrid.SelectedItem;
+                string temp_id = (TypeHotelGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                int id = Convert.ToInt32(temp_id);
+                H_Hotel_Roomtype datadel = SearchByIdTipehotel(id);
+                _context.Entry(datadel).State = System.Data.Entity.EntityState.Deleted;
+                _context.SaveChanges();
+                clearhotel();
+                this.viewHotelTypeGrid(TypeHotelGrid);
+            }
+            else
+            {
 
+            }
         }
     }
 }

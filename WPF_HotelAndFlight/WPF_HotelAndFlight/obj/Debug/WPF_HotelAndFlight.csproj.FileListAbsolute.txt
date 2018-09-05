@@ -66,3 +66,5 @@ C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelA
 C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\HotelWindow.baml
 C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\FlightWindow.g.cs
 C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\FlightWindow.baml
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\UserWindow.g.cs
+C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\obj\Debug\UserWindow.baml

@@ -14,6 +14,8 @@ namespace WPF_HotelAndFlight.Model
     
     public partial class H_Roomtype
     {
+        internal object H_RoomtypeID;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public H_Roomtype()
         {

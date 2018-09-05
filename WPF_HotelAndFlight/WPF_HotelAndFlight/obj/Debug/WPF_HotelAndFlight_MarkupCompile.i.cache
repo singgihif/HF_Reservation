@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Singgihpratama99\Documents\Visual Studio 2015\HF_Reservation\WPF_HotelAndFlight\WPF_HotelAndFlight\App.xaml
-4-555002370
+51712885058
 236602677
-381561332176
+391406322463
 18559007013
-FlightWindow.xaml;HotelWindow.xaml;loginWindow.xaml;MainWindow.xaml;
+FlightWindow.xaml;HotelWindow.xaml;loginWindow.xaml;MainWindow.xaml;UserWindow.xaml;
 
-False
+True
 
