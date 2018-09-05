@@ -107,6 +107,19 @@ namespace WPF_HotelAndFlight
             HotelWindow hasil = new HotelWindow();
             hasil.ShowDialog();
         }
+
+        private void savebooking_Click(object sender, RoutedEventArgs e)
+        {
+            A_BookingdateController contr = new A_BookingdateController();
+            DateTime Booking_date = Convert.ToDateTime(Tglbooking.Text);
+            int HF_User = Convert.ToInt32(Iduser.SelectedValue);
+            contr.InsertBookingDate(Booking_date, HF_User);
+            MessageBox.Show("Register Success", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
+            this.Hide();
+            HotelWindow hasil = new HotelWindow();
+            hasil.ShowDialog();
+        }
+
         //=========================================View===================================================
         private void viewHotelGrid(DataGrid DG)
         {
@@ -131,6 +144,11 @@ namespace WPF_HotelAndFlight
             DG.ItemsSource = _context.H_Hotel_Roomtype.OrderBy(x => x.Id).ToList();
         }
 
+        private void viewTglBookingGrid(DataGrid DG)
+        {
+            DG.ItemsSource = _context.HF_Booking.OrderBy(x => x.Id).ToList();
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             viewHotelGrid(HotelGrid);
@@ -138,6 +156,8 @@ namespace WPF_HotelAndFlight
             viewFkamarGrid(FkamarGrid);
             LoadIdTRComboBox();
             viewHotelTypeGrid(TypeHotelGrid);
+            LoadIduser();
+            viewTglBookingGrid(TglBookingGrid);
         }
 
         private H_Hotel SearchByIdHotel(int id)
@@ -243,6 +263,25 @@ namespace WPF_HotelAndFlight
                 Id_Hotelbox.Text = data6;
                 string data7 = (TypeHotelGrid.SelectedCells[6].Column.GetCellContent(item) as TextBlock).Text;
                 Id_Tipekamarbox.Text = data7;
+            }
+            catch (Exception ex)
+            {
+                System.Console.Write(ex.InnerException);
+            }
+        }
+
+        private void TglBookingGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                object item = TglBookingGrid.SelectedItem;
+
+                string data1 = (TglBookingGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                Id_Bookingdate.Text = data1;
+                string data2 = (TglBookingGrid.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
+                Tglbooking.Text = data2;
+                string data3 = (TglBookingGrid.SelectedCells[2].Column.GetCellContent(item) as TextBlock).Text;
+                Iduser.Text = data3;
             }
             catch (Exception ex)
             {
@@ -429,6 +468,13 @@ namespace WPF_HotelAndFlight
             Id_Hotelbox.ItemsSource = _context.H_Hotel.ToList();
         }
 
+        public void LoadIduser()
+        {
+            Iduser.DisplayMemberPath = "Name";
+            Iduser.SelectedValuePath = "Id";
+            Iduser.ItemsSource = _context.HF_User.ToList();
+        }
+
         private void hapustipe_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Are You Sure ?", "Information", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
@@ -446,6 +492,11 @@ namespace WPF_HotelAndFlight
             {
 
             }
+        }
+
+        private void updatebooking_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

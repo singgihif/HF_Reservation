@@ -158,7 +158,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Booking_date" Type="datetime" />
           <Property Name="HF_CustomerID" Type="int" />
         </EntityType>

@@ -165,6 +165,33 @@
                 </Grid>
             </TabItem>
 
+            <TabItem Header="Tanggal Booking" Background="Azure">
+                <Grid Background="#FFF9ECE3">
+                    <GroupBox Header="TanggalBooking" HorizontalAlignment="Left" Height="351" VerticalAlignment="Top" Width="195" BorderBrush="#FF4DA0D3" Background="#FFFB8542">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Id Booking"></TextBlock>
+                            <TextBox Name="Id_Bookingdate" Width="70" Margin="-100,0,0,0" IsReadOnly="True"></TextBox>
+                            <TextBlock Text="Tanggal Booking"></TextBlock>
+                            <DatePicker Name="Tglbooking" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top"/>
+                            <TextBlock Text="Nama Customer"></TextBlock>
+                            <ComboBox Name="Iduser" Width="150" Margin="-20,0,0,0" IsReadOnly="True"></ComboBox>
+                        </StackPanel>
+                    </GroupBox>
+                    <DataGrid Name="TglBookingGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="240" Margin="200,10,0,0" VerticalAlignment="Top" Width="575" Background="#FFFBFFFF" BorderBrush="#FFF9FBFD" SelectionChanged="TglBookingGrid_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id Booking" Binding="{Binding Id}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Tanggal Booking" Binding="{Binding Booking_date}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Nama Customer" Binding="{Binding HF_User.Name}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <GroupBox Header="Action" HorizontalAlignment="Left" Height="75" VerticalAlignment="Top" Width="575" Margin="200,276,0,0" Background="#FFFFB87C">
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="savebooking" Click="savebooking_Click" Width="150" Height="30" Margin="40,12,0,11" Background="#FF6AB1EC" Content="SIMPAN"/>
+                            <Button x:Name="ubahbooking" Click="updatebooking_Click" Width="150" Height="30" Margin="40,0,0,0" Background="#FFECEC80" Content="UBAH"></Button>
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
