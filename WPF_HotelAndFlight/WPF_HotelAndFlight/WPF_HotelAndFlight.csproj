@@ -67,6 +67,75 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\A_BookingdateController.cs" />
+    <Compile Include="Model\FlightReservation.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlightReservation.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FlightReservation.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FlightReservation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlightReservation.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\F_Airport.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\F_Coupon.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\F_DetailBooking.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\F_Facility.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\F_Flightclass.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\F_Flightclass_Facility.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\F_Maskapai.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\F_Maskapai_Flightclass.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HF_Booking.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HF_User.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\H_Detailbooking.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\H_Facility.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\H_Hotel.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\H_Hotel_Roomtype.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\H_Payment.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\H_Roomtype.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\H_Roomtype_Facility.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Role.cs">
+      <DependentUpon>FlightReservation.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
@@ -94,75 +163,6 @@
     <Compile Include="Controller\A_Hotel_RoomtypeController.cs" />
     <Compile Include="Controller\A_Roomtype_FacilityController.cs" />
     <Compile Include="Controller\UserController.cs" />
-    <Compile Include="Model\FlightHotelReservation.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FlightHotelReservation.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\FlightHotelReservation.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\FlightHotelReservation.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FlightHotelReservation.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\F_Airport.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\F_Coupon.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\F_DetailBooking.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\F_Facility.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\F_Flightclass.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\F_Flightclass_Facility.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\F_Maskapai.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\F_Maskapai_Flightclass.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\HF_Booking.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\HF_User.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\H_Detailbooking.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\H_Facility.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\H_Hotel.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\H_Hotel_Roomtype.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\H_Payment.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\H_Roomtype.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\H_Roomtype_Facility.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Role.cs">
-      <DependentUpon>FlightHotelReservation.tt</DependentUpon>
-    </Compile>
     <Compile Include="FlightWindow.xaml.cs">
       <DependentUpon>FlightWindow.xaml</DependentUpon>
     </Compile>
@@ -200,12 +200,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\FlightHotelReservation.edmx">
+    <EntityDeploy Include="Model\FlightReservation.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FlightHotelReservation.Designer.cs</LastGenOutput>
+      <LastGenOutput>FlightReservation.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\FlightHotelReservation.edmx.diagram">
-      <DependentUpon>FlightHotelReservation.edmx</DependentUpon>
+    <None Include="Model\FlightReservation.edmx.diagram">
+      <DependentUpon>FlightReservation.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\App.datasource" />
@@ -230,19 +230,19 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\FlightHotelReservation.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FlightHotelReservation.edmx</DependentUpon>
-      <LastGenOutput>FlightHotelReservation.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model\FlightHotelReservation.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FlightHotelReservation.edmx</DependentUpon>
-      <LastGenOutput>FlightHotelReservation.cs</LastGenOutput>
-    </Content>
+    <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="View\" />
+    <Content Include="Model\FlightReservation.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FlightReservation.edmx</DependentUpon>
+      <LastGenOutput>FlightReservation.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\FlightReservation.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FlightReservation.edmx</DependentUpon>
+      <LastGenOutput>FlightReservation.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

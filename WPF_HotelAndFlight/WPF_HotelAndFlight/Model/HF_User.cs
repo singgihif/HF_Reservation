@@ -27,6 +27,7 @@ namespace WPF_HotelAndFlight.Model
         public string Location { get; set; }
         public string Passwords { get; set; }
         public Nullable<int> RoleID { get; set; }
+        public string Gender { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HF_Booking> HF_Booking { get; set; }

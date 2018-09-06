@@ -23,7 +23,7 @@ namespace WPF_HotelAndFlight
     /// </summary>
     public partial class HotelWindow : Window
     {
-        Flight_ReservationEntities1 _context = new Flight_ReservationEntities1();
+        Flight_ReservationEntities2 _context = new Flight_ReservationEntities2();
         public HotelWindow()
         {
             InitializeComponent();
@@ -120,12 +120,48 @@ namespace WPF_HotelAndFlight
             hasil.ShowDialog();
         }
 
+        public string getJenisKelaminUser()
+        {
+            string jk = "";
+            if (rbLaki.IsChecked == true)
+            {
+                jk = "Laki-laki";
+            }
+            else if (rbPerempuan.IsChecked == true)
+            {
+                jk = "Perempuan";
+            }
+            return jk;
+
+        }
+        private void savecust_Click(object sender, RoutedEventArgs e)
+        {
+            UserController contr = new UserController();
+            string Customer_name = Cust_name.Text;
+            string User_name = Username.Text;
+            string Email_cust = Emailcust.Text;
+            string Loc = Locationcust.Text;
+            string Password = Passwordcust.Text;
+            int Roles = Convert.ToInt16(Roles_id.SelectedValue);
+            string Gender = getJenisKelaminUser();
+            contr.InsertUser(Customer_name, User_name, Email_cust, Loc, Password, Roles, Gender);
+            MessageBox.Show("Register Success", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
+            this.Hide();
+            HotelWindow hasil = new HotelWindow();
+            hasil.ShowDialog();
+        }
+
+
         //=========================================View===================================================
         private void viewHotelGrid(DataGrid DG)
         {
             DG.ItemsSource = _context.H_Hotel.OrderBy(x => x.Id).ToList();
         }
 
+        private void viewCustomerGrid(DataGrid DG)
+        {
+            DG.ItemsSource = _context.HF_User.OrderBy(x => x.Id).ToList();
+        }
         /*private void viewFkamarGrid(DataGrid DG)
         {
             var Fkamar = from r in _context.H_Roomtype.ToList() join rf in _context.H_Roomtype_Facility.ToList()
@@ -151,6 +187,7 @@ namespace WPF_HotelAndFlight
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            viewCustomerGrid(CustomerGrid);
             viewHotelGrid(HotelGrid);
             LoadIdComboBox();
             viewFkamarGrid(FkamarGrid);
@@ -158,6 +195,7 @@ namespace WPF_HotelAndFlight
             viewHotelTypeGrid(TypeHotelGrid);
             LoadIduser();
             viewTglBookingGrid(TglBookingGrid);
+            LoadIdrole();
         }
 
         private H_Hotel SearchByIdHotel(int id)
@@ -475,6 +513,13 @@ namespace WPF_HotelAndFlight
             Iduser.ItemsSource = _context.HF_User.ToList();
         }
 
+        public void LoadIdrole()
+        {
+            Roles_id.DisplayMemberPath = "Roles";
+            Roles_id.SelectedValuePath = "Id";
+            Roles_id.ItemsSource = _context.Roles.ToList();
+        }
+
         private void hapustipe_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Are You Sure ?", "Information", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
@@ -495,6 +540,16 @@ namespace WPF_HotelAndFlight
         }
 
         private void updatebooking_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void updatecust_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Hapuscust_Click(object sender, RoutedEventArgs e)
         {
 
         }

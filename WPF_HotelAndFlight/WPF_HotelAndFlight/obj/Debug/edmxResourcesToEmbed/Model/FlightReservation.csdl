@@ -120,7 +120,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Hotel_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Alamat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Kota" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -135,7 +135,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Price" Type="Int32" />
     <Property Name="Available" Type="Int32" />
     <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -170,7 +170,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="H_FacilityID" Type="Int32" />
     <Property Name="H_RoomtypeID" Type="Int32" />
     <NavigationProperty Name="H_Facility" Relationship="Self.fk_H_FacilityID" FromRole="H_Roomtype_Facility" ToRole="H_Facility" />
@@ -180,7 +180,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Booking_date" Type="DateTime" Precision="3" />
     <Property Name="HF_CustomerID" Type="Int32" />
     <NavigationProperty Name="F_DetailBooking" Relationship="Self.fk_BookingID" FromRole="HF_Booking" ToRole="F_DetailBooking" />
@@ -192,7 +192,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -201,7 +201,7 @@
     <Property Name="RoleID" Type="Int32" />
     <NavigationProperty Name="HF_Booking" Relationship="Self.fk_HF_CustomerID" FromRole="HF_User" ToRole="HF_Booking" />
     <NavigationProperty Name="Role" Relationship="Self.fk_RoleID" FromRole="HF_User" ToRole="Role" />
-    <Property Name="Gender" Type="Boolean" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -415,7 +415,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Flight_ReservationEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Flight_ReservationEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="F_Airport" EntityType="Self.F_Airport" />
     <EntitySet Name="F_Coupon" EntityType="Self.F_Coupon" />
     <EntitySet Name="F_DetailBooking" EntityType="Self.F_DetailBooking" />

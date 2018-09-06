@@ -9,7 +9,7 @@ namespace WPF_HotelAndFlight.Controller
 {
     class A_Hotel_RoomtypeController
     {
-        Flight_ReservationEntities1 _context = new Flight_ReservationEntities1();
+        Flight_ReservationEntities2 _context = new Flight_ReservationEntities2();
 
         // =========================================== INSERT =============================================
         public void InsertTipeHotel(int Harga, int Stok, string Foto, string Deskripsi, int RoomtypeID, int HotelID)

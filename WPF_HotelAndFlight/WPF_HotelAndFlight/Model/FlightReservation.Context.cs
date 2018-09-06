@@ -13,10 +13,10 @@ namespace WPF_HotelAndFlight.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Flight_ReservationEntities1 : DbContext
+    public partial class Flight_ReservationEntities2 : DbContext
     {
-        public Flight_ReservationEntities1()
-            : base("name=Flight_ReservationEntities1")
+        public Flight_ReservationEntities2()
+            : base("name=Flight_ReservationEntities2")
         {
         }
     

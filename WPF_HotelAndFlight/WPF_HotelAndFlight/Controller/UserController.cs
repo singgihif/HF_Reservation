@@ -12,7 +12,7 @@ namespace WPF_HotelAndFlight.Controller
 {
     class UserController
     {
-        Flight_ReservationEntities1 context = new Flight_ReservationEntities1();
+        Flight_ReservationEntities2 context = new Flight_ReservationEntities2();
         // =========================================== LOGIN =============================================
         public bool login(string Username, string Password)
         {
@@ -41,7 +41,7 @@ namespace WPF_HotelAndFlight.Controller
         }
 
         // =========================================== INSERT =============================================
-        public void Insert(string data1, string data2, string data3, string data4, string data5, int data6)
+        public void InsertUser(string data1, string data2, string data3, string data4, string data5, int data6, string data7)
         {
             HF_User call = new HF_User();
             {
@@ -51,6 +51,7 @@ namespace WPF_HotelAndFlight.Controller
                 call.Location = data4;
                 call.Passwords = data5;
                 call.RoleID = data6;
+                call.Gender = data7;
             };
             try
             {

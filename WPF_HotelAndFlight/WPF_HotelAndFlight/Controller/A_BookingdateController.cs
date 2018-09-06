@@ -10,7 +10,7 @@ namespace WPF_HotelAndFlight.Controller
 {
     class A_BookingdateController
     {
-        Flight_ReservationEntities1 _context = new Flight_ReservationEntities1();
+        Flight_ReservationEntities2 _context = new Flight_ReservationEntities2();
 
         public void InsertBookingDate(DateTime Tglbooking, int IdUser)
         {

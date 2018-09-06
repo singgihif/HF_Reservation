@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/flighthotelreservation.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/flighthotelreservation.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/flightreservation.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/flightreservation.tt")]
 
 

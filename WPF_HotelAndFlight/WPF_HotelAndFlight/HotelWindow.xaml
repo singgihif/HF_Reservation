@@ -192,6 +192,50 @@
                     </GroupBox>
                 </Grid>
             </TabItem>
+
+            <TabItem Header="Data Customer" Background="Azure">
+                <Grid Background="#FFF9ECE3">
+                    <GroupBox Header="DataCustomer" HorizontalAlignment="Left" Height="351" VerticalAlignment="Top" Width="195" BorderBrush="#FF4DA0D3" Background="#FFFB8542">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Id Customer"></TextBlock>
+                            <TextBox Name="Id_Customer" Width="70" Margin="-100,0,0,0" IsReadOnly="True"></TextBox>
+                            <TextBlock Text="Nama Customer"></TextBlock>
+                            <TextBox Name="Cust_name" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top"/>
+                            <TextBlock Text="Username"></TextBlock>
+                            <TextBox Name="Username" Width="150" Margin="-20,0,0,0"></TextBox>
+                            <TextBlock Text="Email"></TextBlock>
+                            <TextBox Name="Emailcust" Width="150" Margin="-20,0,0,0"></TextBox>
+                            <TextBlock Text="Address"></TextBlock>
+                            <TextBox Name="Locationcust" Width="150" Margin="-20,0,0,0"></TextBox>
+                            <TextBlock Text="Password"></TextBlock>
+                            <TextBox x:Name="Passwordcust" Width="100" Margin="8,0,75,0"/>
+                            <TextBlock Text="Role"></TextBlock>
+                            <ComboBox Name="Roles_id" Width="150" Margin="-20,0,0,0"></ComboBox>
+                            <TextBlock Text="Gender"></TextBlock>
+                            <RadioButton Name="rbLaki" Content="Laki-laki" HorizontalAlignment="Left" Margin="9,0,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="Black"/>
+                            <RadioButton Name="rbPerempuan" Content="Perempuan " HorizontalAlignment="Left" Margin="9,0,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="Black"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <DataGrid Name="CustomerGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="240" Margin="200,10,0,0" VerticalAlignment="Top" Width="575" Background="#FFFBFFFF" BorderBrush="#FFF9FBFD" SelectionChanged="TglBookingGrid_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id Customer" Binding="{Binding Id}" IsReadOnly="True"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Nama Customer" Binding="{Binding Name}" IsReadOnly="True"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Username" Binding="{Binding Username}" IsReadOnly="True"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" IsReadOnly="True"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Address" Binding="{Binding Location}" IsReadOnly="True"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Roles" Binding="{Binding Role.Roles}" IsReadOnly="True"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" IsReadOnly="True"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <GroupBox Header="Action" HorizontalAlignment="Left" Height="75" VerticalAlignment="Top" Width="575" Margin="200,276,0,0" Background="#FFFFB87C">
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="saveCust" Click="savecust_Click" Width="150" Height="30" Margin="40,12,0,11" Background="#FF6AB1EC" Content="SIMPAN"/>
+                            <Button x:Name="ubahCust" Click="updatecust_Click" Width="150" Height="30" Margin="40,0,0,0" Background="#FFECEC80" Content="UBAH"></Button>
+                            <Button x:Name="HapusCust" Click="Hapuscust_Click" Width="150" Height="30" Margin="35,12,0,11" Background="#FFF74848" Content="HAPUS" />
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
