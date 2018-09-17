@@ -12,26 +12,23 @@ namespace WPF_HotelAndFlight.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class HF_Booking
+    public partial class regency
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public HF_Booking()
+        public regency()
         {
-            this.F_DetailBooking = new HashSet<F_DetailBooking>();
-            this.H_Detailbooking = new HashSet<H_Detailbooking>();
-            this.H_Payment = new HashSet<H_Payment>();
+            this.districts = new HashSet<district>();
+            this.villages = new HashSet<village>();
         }
     
-        public int Id { get; set; }
-        public Nullable<System.DateTime> Booking_date { get; set; }
-        public Nullable<int> HF_CustomerID { get; set; }
+        public string id { get; set; }
+        public string province_id { get; set; }
+        public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<F_DetailBooking> F_DetailBooking { get; set; }
+        public virtual ICollection<district> districts { get; set; }
+        public virtual province province { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<H_Detailbooking> H_Detailbooking { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<H_Payment> H_Payment { get; set; }
-        public virtual HF_User HF_User { get; set; }
+        public virtual ICollection<village> villages { get; set; }
     }
 }

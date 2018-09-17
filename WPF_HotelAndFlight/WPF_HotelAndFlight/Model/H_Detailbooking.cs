@@ -14,6 +14,12 @@ namespace WPF_HotelAndFlight.Model
     
     public partial class H_Detailbooking
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public H_Detailbooking()
+        {
+            this.HF_Payment = new HashSet<HF_Payment>();
+        }
+    
         public int Id { get; set; }
         public Nullable<int> qty { get; set; }
         public Nullable<System.DateTime> Checkin_date { get; set; }
@@ -23,7 +29,8 @@ namespace WPF_HotelAndFlight.Model
         public Nullable<int> H_Hotel_RoomtypeID { get; set; }
         public string Status { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HF_Payment> HF_Payment { get; set; }
         public virtual H_Hotel_Roomtype H_Hotel_Roomtype { get; set; }
-        public virtual HF_Booking HF_Booking { get; set; }
     }
 }

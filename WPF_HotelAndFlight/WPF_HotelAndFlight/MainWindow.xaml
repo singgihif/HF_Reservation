@@ -20,7 +20,11 @@
                 <GradientStop Color="#FF961F1F" Offset="1"/>
             </LinearGradientBrush>
         </Grid.OpacityMask>
-        <Rectangle Margin="0,102,10,-0.4" Stroke="Black" Width="538" HorizontalAlignment="Center" Grid.ColumnSpan="2" Height="317" VerticalAlignment="Top" Fill="#FFF1E5DE"/>
+        <Rectangle Margin="0,102,10,-0.4" Stroke="Black" Width="538" HorizontalAlignment="Center" Grid.ColumnSpan="2" Height="317" VerticalAlignment="Top">
+            <Rectangle.Fill>
+                <ImageBrush/>
+            </Rectangle.Fill>
+        </Rectangle>
         <Label x:Name="label" Content="Reservasi&#xD;&#xA;Pesawat Dan Hotel" VerticalAlignment="Top" FontFamily="Stencil" BorderThickness="2" AllowDrop="True" FontSize="36" RenderTransformOrigin="0.351,0.026" Width="538" Height="95" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="0,0,10,0" Grid.ColumnSpan="2" Grid.IsSharedSizeScope="True" IsEnabled="False" Foreground="#FFF4F8F9">
             <Label.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

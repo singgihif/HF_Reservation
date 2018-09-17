@@ -14,6 +14,12 @@ namespace WPF_HotelAndFlight.Model
     
     public partial class F_DetailBooking
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public F_DetailBooking()
+        {
+            this.HF_Payment = new HashSet<HF_Payment>();
+        }
+    
         public int Id { get; set; }
         public Nullable<int> HF_BookingID { get; set; }
         public string Name { get; set; }
@@ -26,7 +32,8 @@ namespace WPF_HotelAndFlight.Model
         public string Status { get; set; }
     
         public virtual F_Coupon F_Coupon { get; set; }
-        public virtual HF_Booking HF_Booking { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HF_Payment> HF_Payment { get; set; }
         public virtual F_Maskapai_Flightclass F_Maskapai_Flightclass { get; set; }
     }
 }

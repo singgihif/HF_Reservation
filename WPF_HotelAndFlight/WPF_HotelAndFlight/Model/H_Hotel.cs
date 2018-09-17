@@ -22,15 +22,14 @@ namespace WPF_HotelAndFlight.Model
     
         public int Id { get; set; }
         public string Hotel_Name { get; set; }
-        public string Alamat { get; set; }
-        public string Kota { get; set; }
-        public string Kecamatan { get; set; }
         public string Jalan { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Manager { get; set; }
+        public string VillagesID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<H_Hotel_Roomtype> H_Hotel_Roomtype { get; set; }
+        public virtual village village { get; set; }
     }
 }

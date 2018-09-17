@@ -12,7 +12,7 @@ namespace WPF_HotelAndFlight.Controller
 {
     class UserController
     {
-        Flight_ReservationEntities2 context = new Flight_ReservationEntities2();
+        Flight_ReservationEntities5 context = new Flight_ReservationEntities5();
         // =========================================== LOGIN =============================================
         public bool login(string Username, string Password)
         {

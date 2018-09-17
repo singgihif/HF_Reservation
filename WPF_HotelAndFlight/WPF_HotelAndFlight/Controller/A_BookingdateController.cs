@@ -10,25 +10,10 @@ namespace WPF_HotelAndFlight.Controller
 {
     class A_BookingdateController
     {
-        Flight_ReservationEntities2 _context = new Flight_ReservationEntities2();
+        Flight_ReservationEntities5 _context = new Flight_ReservationEntities5();
 
         public void InsertBookingDate(DateTime Tglbooking, int IdUser)
         {
-            HF_Booking call = new HF_Booking();
-            {
-                call.Booking_date = Tglbooking;
-                call.HF_CustomerID = IdUser;
-            };
-            try
-            {
-                _context.HF_Booking.Add(call);
-                var result = _context.SaveChanges();
-
-            }
-            catch (Exception ex)
-            {
-                System.Console.Write(ex.InnerException);
-            }
         }
     }
 }

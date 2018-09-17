@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Flight_ReservationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="districts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="nchar" MaxLength="7" Nullable="false" />
+    <Property Name="regency_id" Type="nchar" MaxLength="4" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
   <EntityType Name="F_Airport">
     <Key>
       <PropertyRef Name="Id" />
@@ -16,7 +24,6 @@
     <Property Name="Date_start" Type="datetime" />
     <Property Name="Date_end" Type="datetime" />
     <Property Name="Promo" Type="int" />
-    <Property Name="F_MaskapaiID" Type="int" />
   </EntityType>
   <EntityType Name="F_DetailBooking">
     <Key>
@@ -65,6 +72,7 @@
     <Property Name="Phone" Type="nvarchar" MaxLength="20" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="Manager" Type="nvarchar" MaxLength="50" />
+    <Property Name="CouponID" Type="int" />
   </EntityType>
   <EntityType Name="F_Maskapai_Flightclass">
     <Key>
@@ -104,13 +112,11 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Hotel_Name" Type="nvarchar" MaxLength="50" />
-    <Property Name="Alamat" Type="nvarchar" MaxLength="50" />
-    <Property Name="Kota" Type="nvarchar" MaxLength="50" />
-    <Property Name="Kecamatan" Type="nvarchar" MaxLength="50" />
     <Property Name="Jalan" Type="nvarchar" MaxLength="50" />
     <Property Name="Phone" Type="nvarchar" MaxLength="20" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="Manager" Type="nvarchar" MaxLength="50" />
+    <Property Name="VillagesID" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="H_Hotel_Roomtype">
     <Key>
@@ -139,6 +145,18 @@
     <Property Name="H_FacilityID" Type="int" />
     <Property Name="H_RoomtypeID" Type="int" />
   </EntityType>
+  <EntityType Name="HF_Payment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Booking_date" Type="datetime" />
+    <Property Name="HF_CustomerID" Type="int" />
+    <Property Name="HotelbookingID" Type="int" />
+    <Property Name="FlightbookingID" Type="int" />
+    <Property Name="Duedate" Type="datetime" />
+    <Property Name="Total" Type="int" />
+  </EntityType>
   <EntityType Name="HF_User">
     <Key>
       <PropertyRef Name="Id" />
@@ -152,6 +170,21 @@
     <Property Name="RoleID" Type="int" />
     <Property Name="Gender" Type="nvarchar" MaxLength="10" />
   </EntityType>
+  <EntityType Name="provinces">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="nchar" MaxLength="2" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="regencies">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="nchar" MaxLength="4" Nullable="false" />
+    <Property Name="province_id" Type="nchar" MaxLength="2" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="Id" />
@@ -159,6 +192,26 @@
     <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Roles" Type="nvarchar" MaxLength="10" />
   </EntityType>
+  <EntityType Name="villages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="district_id" Type="nchar" MaxLength="7" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="fk_Detailbooking">
+    <End Role="H_Detailbooking" Type="Self.H_Detailbooking" Multiplicity="0..1" />
+    <End Role="HF_Payment" Type="Self.HF_Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_Detailbooking">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HF_Payment">
+        <PropertyRef Name="HotelbookingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fk_F_CouponID">
     <End Role="F_Coupon" Type="Self.F_Coupon" Multiplicity="0..1" />
     <End Role="F_DetailBooking" Type="Self.F_DetailBooking" Multiplicity="*" />
@@ -216,6 +269,18 @@
       </Principal>
       <Dependent Role="F_Maskapai_Flightclass">
         <PropertyRef Name="F_MaskapaiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_FDetailbooking">
+    <End Role="F_DetailBooking" Type="Self.F_DetailBooking" Multiplicity="0..1" />
+    <End Role="HF_Payment" Type="Self.HF_Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="F_DetailBooking">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HF_Payment">
+        <PropertyRef Name="FlightbookingID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -279,6 +344,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="fk_HF_CustomerID">
+    <End Role="HF_User" Type="Self.HF_User" Multiplicity="0..1" />
+    <End Role="HF_Payment" Type="Self.HF_Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HF_User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HF_Payment">
+        <PropertyRef Name="HF_CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_kuponID">
+    <End Role="F_Coupon" Type="Self.F_Coupon" Multiplicity="0..1" />
+    <End Role="F_Maskapai" Type="Self.F_Maskapai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="F_Coupon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="F_Maskapai">
+        <PropertyRef Name="CouponID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fk_Maskapai_FlightclassID">
     <End Role="F_Maskapai_Flightclass" Type="Self.F_Maskapai_Flightclass" Multiplicity="0..1" />
     <End Role="F_DetailBooking" Type="Self.F_DetailBooking" Multiplicity="*" />
@@ -291,15 +380,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_MaskapaiID">
-    <End Role="F_Maskapai" Type="Self.F_Maskapai" Multiplicity="0..1" />
-    <End Role="F_Coupon" Type="Self.F_Coupon" Multiplicity="*" />
+  <Association Name="fk_Regencies">
+    <End Role="provinces" Type="Self.provinces" Multiplicity="1" />
+    <End Role="regencies" Type="Self.regencies" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="F_Maskapai">
-        <PropertyRef Name="Id" />
+      <Principal Role="provinces">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="F_Coupon">
-        <PropertyRef Name="F_MaskapaiID" />
+      <Dependent Role="regencies">
+        <PropertyRef Name="province_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_regencyid">
+    <End Role="regencies" Type="Self.regencies" Multiplicity="1" />
+    <End Role="districts" Type="Self.districts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="regencies">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="districts">
+        <PropertyRef Name="regency_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -315,7 +416,32 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_villages_villages">
+    <End Role="villages" Type="Self.villages" Multiplicity="1" />
+    <End Role="villages1" Type="Self.villages" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="villages">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="villages1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_VillagesID">
+    <End Role="villages" Type="Self.villages" Multiplicity="0..1" />
+    <End Role="H_Hotel" Type="Self.H_Hotel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="villages">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="H_Hotel">
+        <PropertyRef Name="VillagesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="Flight_ReservationModelStoreContainer">
+    <EntitySet Name="districts" EntityType="Self.districts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="F_Airport" EntityType="Self.F_Airport" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="F_Coupon" EntityType="Self.F_Coupon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="F_DetailBooking" EntityType="Self.F_DetailBooking" Schema="dbo" store:Type="Tables" />
@@ -330,8 +456,16 @@
     <EntitySet Name="H_Hotel_Roomtype" EntityType="Self.H_Hotel_Roomtype" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="H_Roomtype" EntityType="Self.H_Roomtype" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="H_Roomtype_Facility" EntityType="Self.H_Roomtype_Facility" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HF_Payment" EntityType="Self.HF_Payment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HF_User" EntityType="Self.HF_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="provinces" EntityType="Self.provinces" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="regencies" EntityType="Self.regencies" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="villages" EntityType="Self.villages" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_Detailbooking" Association="Self.fk_Detailbooking">
+      <End Role="H_Detailbooking" EntitySet="H_Detailbooking" />
+      <End Role="HF_Payment" EntitySet="HF_Payment" />
+    </AssociationSet>
     <AssociationSet Name="fk_F_CouponID" Association="Self.fk_F_CouponID">
       <End Role="F_Coupon" EntitySet="F_Coupon" />
       <End Role="F_DetailBooking" EntitySet="F_DetailBooking" />
@@ -351,6 +485,10 @@
     <AssociationSet Name="fk_F_MaskapaiID" Association="Self.fk_F_MaskapaiID">
       <End Role="F_Maskapai" EntitySet="F_Maskapai" />
       <End Role="F_Maskapai_Flightclass" EntitySet="F_Maskapai_Flightclass" />
+    </AssociationSet>
+    <AssociationSet Name="fk_FDetailbooking" Association="Self.fk_FDetailbooking">
+      <End Role="F_DetailBooking" EntitySet="F_DetailBooking" />
+      <End Role="HF_Payment" EntitySet="HF_Payment" />
     </AssociationSet>
     <AssociationSet Name="fk_H_FacilityID" Association="Self.fk_H_FacilityID">
       <End Role="H_Facility" EntitySet="H_Facility" />
@@ -372,17 +510,37 @@
       <End Role="H_Roomtype" EntitySet="H_Roomtype" />
       <End Role="H_Roomtype_Facility" EntitySet="H_Roomtype_Facility" />
     </AssociationSet>
+    <AssociationSet Name="fk_HF_CustomerID" Association="Self.fk_HF_CustomerID">
+      <End Role="HF_User" EntitySet="HF_User" />
+      <End Role="HF_Payment" EntitySet="HF_Payment" />
+    </AssociationSet>
+    <AssociationSet Name="fk_kuponID" Association="Self.fk_kuponID">
+      <End Role="F_Coupon" EntitySet="F_Coupon" />
+      <End Role="F_Maskapai" EntitySet="F_Maskapai" />
+    </AssociationSet>
     <AssociationSet Name="fk_Maskapai_FlightclassID" Association="Self.fk_Maskapai_FlightclassID">
       <End Role="F_Maskapai_Flightclass" EntitySet="F_Maskapai_Flightclass" />
       <End Role="F_DetailBooking" EntitySet="F_DetailBooking" />
     </AssociationSet>
-    <AssociationSet Name="fk_MaskapaiID" Association="Self.fk_MaskapaiID">
-      <End Role="F_Maskapai" EntitySet="F_Maskapai" />
-      <End Role="F_Coupon" EntitySet="F_Coupon" />
+    <AssociationSet Name="fk_Regencies" Association="Self.fk_Regencies">
+      <End Role="provinces" EntitySet="provinces" />
+      <End Role="regencies" EntitySet="regencies" />
+    </AssociationSet>
+    <AssociationSet Name="fk_regencyid" Association="Self.fk_regencyid">
+      <End Role="regencies" EntitySet="regencies" />
+      <End Role="districts" EntitySet="districts" />
     </AssociationSet>
     <AssociationSet Name="fk_RoleID" Association="Self.fk_RoleID">
       <End Role="Role" EntitySet="Role" />
       <End Role="HF_User" EntitySet="HF_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_villages_villages" Association="Self.FK_villages_villages">
+      <End Role="villages" EntitySet="villages" />
+      <End Role="villages1" EntitySet="villages" />
+    </AssociationSet>
+    <AssociationSet Name="fk_VillagesID" Association="Self.fk_VillagesID">
+      <End Role="villages" EntitySet="villages" />
+      <End Role="H_Hotel" EntitySet="H_Hotel" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -37,7 +37,6 @@ namespace WPF_HotelAndFlight
 
             if (users.login(usernamebox.Text, passwordBox.Password) == true)
             {
-                MessageBox.Show("Login Success", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Hide();
                 HotelWindow admin = new HotelWindow();
                 admin.ShowDialog();

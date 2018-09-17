@@ -10,19 +10,17 @@ namespace WPF_HotelAndFlight.Controller
 {
     class A_HotelController
     {
-        Flight_ReservationEntities2 _context = new Flight_ReservationEntities2();
+        Flight_ReservationEntities5 _context = new Flight_ReservationEntities5();
         private string v1;
         private string v2;
 
         // =========================================== INSERT =============================================
-        public void InsertHotel(string Hotel_name, string Alamat_hotel, string  City, string Kecamatan, string Jalan, string phone, string email, string Manager)
+        public void InsertHotel(string Hotel_name, string Kecamatan, string Jalan, string phone, string email, string Manager)
         {
             H_Hotel call = new H_Hotel();
             {
                 call.Hotel_Name = Hotel_name;
-                call.Alamat = Alamat_hotel;
-                call.Kota = City;
-                call.Kecamatan = Kecamatan;
+                call.VillagesID = Kecamatan;
                 call.Jalan = Jalan;
                 call.Phone = phone;
                 call.Email = email;
@@ -54,9 +52,7 @@ namespace WPF_HotelAndFlight.Controller
             {
                 System.Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++++++++");
                 System.Console.WriteLine("ID                : " + user.Id);
-                System.Console.WriteLine("Alamat          : " + user.Alamat);
-                System.Console.WriteLine("Kota             : " + user.Kota);
-                System.Console.WriteLine("Kecamatan           : " + user.Kecamatan);
+                System.Console.WriteLine("Alamat                : " + user.VillagesID);
                 System.Console.WriteLine("Jalan              : " + user.Jalan);
                 System.Console.WriteLine("Phone             : " + user.Phone);
                 System.Console.WriteLine("Email             : " + user.Email);
@@ -109,9 +105,7 @@ namespace WPF_HotelAndFlight.Controller
             {
                 H_Hotel call = GetById(input);
                 call.Hotel_Name = Hotel_name;
-                call.Alamat = Alamat_hotel;
-                call.Kota = City;
-                call.Kecamatan = Kecamatan;
+                call.VillagesID = Alamat_hotel;
                 call.Jalan = Jalan;
                 call.Phone = phone;
                 call.Email = email;

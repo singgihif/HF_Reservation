@@ -12,14 +12,12 @@ namespace WPF_HotelAndFlight.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class H_Payment
+    public partial class district
     {
-        public int Id { get; set; }
-        public Nullable<System.DateTime> Due_date { get; set; }
-        public Nullable<int> Total { get; set; }
-        public string Payment_status { get; set; }
-        public Nullable<int> HF_BookingID { get; set; }
+        public string id { get; set; }
+        public string regency_id { get; set; }
+        public string name { get; set; }
     
-        public virtual HF_Booking HF_Booking { get; set; }
+        public virtual regency regency { get; set; }
     }
 }

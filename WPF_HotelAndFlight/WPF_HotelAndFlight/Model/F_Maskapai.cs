@@ -17,7 +17,6 @@ namespace WPF_HotelAndFlight.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public F_Maskapai()
         {
-            this.F_Coupon = new HashSet<F_Coupon>();
             this.F_Maskapai_Flightclass = new HashSet<F_Maskapai_Flightclass>();
         }
     
@@ -27,9 +26,9 @@ namespace WPF_HotelAndFlight.Model
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Manager { get; set; }
+        public Nullable<int> CouponID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<F_Coupon> F_Coupon { get; set; }
+        public virtual F_Coupon F_Coupon { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<F_Maskapai_Flightclass> F_Maskapai_Flightclass { get; set; }
     }

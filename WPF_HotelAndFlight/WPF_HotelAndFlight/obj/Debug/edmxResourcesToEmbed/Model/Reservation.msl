@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Flight_ReservationModelStoreContainer" CdmEntityContainer="Flight_ReservationEntities2">
+  <EntityContainerMapping StorageEntityContainer="Flight_ReservationModelStoreContainer" CdmEntityContainer="Flight_ReservationEntities5">
+    <EntitySetMapping Name="districts">
+      <EntityTypeMapping TypeName="Flight_ReservationModel.district">
+        <MappingFragment StoreEntitySet="districts">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="regency_id" ColumnName="regency_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="F_Airport">
       <EntityTypeMapping TypeName="Flight_ReservationModel.F_Airport">
         <MappingFragment StoreEntitySet="F_Airport">
@@ -17,7 +26,6 @@
           <ScalarProperty Name="Date_start" ColumnName="Date_start" />
           <ScalarProperty Name="Date_end" ColumnName="Date_end" />
           <ScalarProperty Name="Promo" ColumnName="Promo" />
-          <ScalarProperty Name="F_MaskapaiID" ColumnName="F_MaskapaiID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -71,6 +79,7 @@
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Manager" ColumnName="Manager" />
+          <ScalarProperty Name="CouponID" ColumnName="CouponID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -114,13 +123,11 @@
         <MappingFragment StoreEntitySet="H_Hotel">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Hotel_Name" ColumnName="Hotel_Name" />
-          <ScalarProperty Name="Alamat" ColumnName="Alamat" />
-          <ScalarProperty Name="Kota" ColumnName="Kota" />
-          <ScalarProperty Name="Kecamatan" ColumnName="Kecamatan" />
           <ScalarProperty Name="Jalan" ColumnName="Jalan" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Manager" ColumnName="Manager" />
+          <ScalarProperty Name="VillagesID" ColumnName="VillagesID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -154,10 +161,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="HF_Payment">
+      <EntityTypeMapping TypeName="Flight_ReservationModel.HF_Payment">
+        <MappingFragment StoreEntitySet="HF_Payment">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Booking_date" ColumnName="Booking_date" />
+          <ScalarProperty Name="HF_CustomerID" ColumnName="HF_CustomerID" />
+          <ScalarProperty Name="HotelbookingID" ColumnName="HotelbookingID" />
+          <ScalarProperty Name="FlightbookingID" ColumnName="FlightbookingID" />
+          <ScalarProperty Name="Duedate" ColumnName="Duedate" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="HF_User">
       <EntityTypeMapping TypeName="Flight_ReservationModel.HF_User">
         <MappingFragment StoreEntitySet="HF_User">
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Username" ColumnName="Username" />
@@ -165,6 +184,24 @@
           <ScalarProperty Name="Location" ColumnName="Location" />
           <ScalarProperty Name="Passwords" ColumnName="Passwords" />
           <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="provinces">
+      <EntityTypeMapping TypeName="Flight_ReservationModel.province">
+        <MappingFragment StoreEntitySet="provinces">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="regencies">
+      <EntityTypeMapping TypeName="Flight_ReservationModel.regency">
+        <MappingFragment StoreEntitySet="regencies">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="province_id" ColumnName="province_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -173,6 +210,15 @@
         <MappingFragment StoreEntitySet="Role">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Roles" ColumnName="Roles" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="villages">
+      <EntityTypeMapping TypeName="Flight_ReservationModel.village">
+        <MappingFragment StoreEntitySet="villages">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="district_id" ColumnName="district_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

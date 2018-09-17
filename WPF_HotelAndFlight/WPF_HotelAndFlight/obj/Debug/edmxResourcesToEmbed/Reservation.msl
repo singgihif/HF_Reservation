@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Flight_ReservationModelStoreContainer" CdmEntityContainer="Flight_ReservationEntities2">
+  <EntityContainerMapping StorageEntityContainer="Flight_ReservationModelStoreContainer" CdmEntityContainer="Flight_ReservationEntities3">
     <EntitySetMapping Name="F_Airport">
       <EntityTypeMapping TypeName="Flight_ReservationModel.F_Airport">
         <MappingFragment StoreEntitySet="F_Airport">
@@ -154,10 +154,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="HF_Payment">
+      <EntityTypeMapping TypeName="Flight_ReservationModel.HF_Payment">
+        <MappingFragment StoreEntitySet="HF_Payment">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Booking_date" ColumnName="Booking_date" />
+          <ScalarProperty Name="HF_CustomerID" ColumnName="HF_CustomerID" />
+          <ScalarProperty Name="HotelbookingID" ColumnName="HotelbookingID" />
+          <ScalarProperty Name="FlightbookingID" ColumnName="FlightbookingID" />
+          <ScalarProperty Name="Duedate" ColumnName="Duedate" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="HF_User">
       <EntityTypeMapping TypeName="Flight_ReservationModel.HF_User">
         <MappingFragment StoreEntitySet="HF_User">
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Username" ColumnName="Username" />
@@ -165,6 +177,7 @@
           <ScalarProperty Name="Location" ColumnName="Location" />
           <ScalarProperty Name="Passwords" ColumnName="Passwords" />
           <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

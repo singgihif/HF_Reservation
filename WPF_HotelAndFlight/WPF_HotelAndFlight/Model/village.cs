@@ -12,23 +12,22 @@ namespace WPF_HotelAndFlight.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class F_Coupon
+    public partial class village
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public F_Coupon()
+        public village()
         {
-            this.F_DetailBooking = new HashSet<F_DetailBooking>();
-            this.F_Maskapai = new HashSet<F_Maskapai>();
+            this.H_Hotel = new HashSet<H_Hotel>();
         }
     
-        public int Id { get; set; }
-        public Nullable<System.DateTime> Date_start { get; set; }
-        public Nullable<System.DateTime> Date_end { get; set; }
-        public Nullable<int> Promo { get; set; }
+        public string id { get; set; }
+        public string district_id { get; set; }
+        public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<F_DetailBooking> F_DetailBooking { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<F_Maskapai> F_Maskapai { get; set; }
+        public virtual ICollection<H_Hotel> H_Hotel { get; set; }
+        public virtual regency regency { get; set; }
+        public virtual village villages1 { get; set; }
+        public virtual village village1 { get; set; }
     }
 }

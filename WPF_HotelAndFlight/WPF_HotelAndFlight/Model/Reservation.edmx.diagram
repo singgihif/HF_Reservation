@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="af94147325f04930b87eb2c4aa168895" Name="Diagram1">
+        <EntityTypeShape EntityType="Flight_ReservationModel.district" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.F_Airport" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.F_Coupon" Width="1.5" PointX="9.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.F_DetailBooking" Width="1.5" PointX="12" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.F_Facility" Width="1.5" PointX="10.5" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.F_Flightclass" Width="1.5" PointX="7.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.F_Flightclass_Facility" Width="1.5" PointX="12.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.F_Maskapai" Width="1.5" PointX="7.5" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.F_Maskapai_Flightclass" Width="1.5" PointX="9.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.H_Detailbooking" Width="1.5" PointX="12" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.H_Facility" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.H_Hotel" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.H_Hotel_Roomtype" Width="1.5" PointX="9.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.H_Roomtype" Width="1.5" PointX="7.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.H_Roomtype_Facility" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.HF_Payment" Width="1.5" PointX="14.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.HF_User" Width="1.5" PointX="12" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.province" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.regency" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.Role" Width="1.5" PointX="9.75" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Flight_ReservationModel.village" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_regency_id" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_F_CouponID" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_kuponID" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_FDetailbooking" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_Maskapai_FlightclassID" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_F_FacilityID" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_F_Flight_classID" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_F_FlightclassID" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_F_MaskapaiID" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_Detailbooking" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_H_Hotel_RoomtypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_H_FacilityID" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_H_HotelID" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_VillagesID" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_H_Room_typeID" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_H_RoomtypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_HF_CustomerID" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_RoleID" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_Regencies" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.fk_Villages" ManuallyRouted="false" />
+        <AssociationConnector Association="Flight_ReservationModel.FK_villages_villages" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

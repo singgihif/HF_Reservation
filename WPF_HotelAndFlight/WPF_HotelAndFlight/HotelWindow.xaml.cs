@@ -15,6 +15,7 @@ using WPF_HotelAndFlight.Controller;
 using System.Data;
 using WPF_HotelAndFlight.Model;
 using System.Data.Entity.Validation;
+using System.Data.SqlClient;
 
 namespace WPF_HotelAndFlight
 {
@@ -23,7 +24,7 @@ namespace WPF_HotelAndFlight
     /// </summary>
     public partial class HotelWindow : Window
     {
-        Flight_ReservationEntities2 _context = new Flight_ReservationEntities2();
+        Flight_ReservationEntities5 _context = new Flight_ReservationEntities5();
         public HotelWindow()
         {
             InitializeComponent();
@@ -31,12 +32,28 @@ namespace WPF_HotelAndFlight
 
         }
 
+        #region Cleartext
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            viewCustomerGrid(CustomerGrid);
+            viewHotelGrid(HotelGrid);
+            LoadIdComboBox();
+            viewFkamarGrid(FkamarGrid);
+            LoadIdTRComboBox();
+            viewHotelTypeGrid(TypeHotelGrid);
+            LoadIduser();
+            LoadIdrole();
+
+            Provinsibox.DisplayMemberPath = "name";
+            Provinsibox.SelectedValuePath = "id";
+            Provinsibox.ItemsSource = _context.provinces.ToList();
+            
+        }
+
         private void clearhotel()
         {
             Nama_Hotel.Text = "";
-            Alamat.Text = "";
-            Kota.Text = "";
-            Kec.Text = "";
+            Kecamatanbox.Text = "";
             Road.Text = "";
             Hp.Text = "";
             Emails.Text = "";
@@ -60,20 +77,13 @@ namespace WPF_HotelAndFlight
             Id_Hotelbox.Text = "";
             Id_Tipekamarbox.Text = "";
         }
+        #endregion
 
-        //=====================================save================================================
+        #region Simpan
         private void save_Click(object sender, RoutedEventArgs e)
         {
             A_HotelController contr = new A_HotelController();
-            string Hotel_name = Nama_Hotel.Text;
-            string Alamat_hotel = Alamat.Text;
-            string City = Kota.Text;
-            string Kecamatan = Kec.Text;
-            string Jalan = Road.Text;
-            string phone = Hp.Text;
-            string Email = Emails.Text;
-            string Manager = Managers.Text;
-            contr.InsertHotel(Hotel_name, Alamat_hotel, City, Kecamatan, Jalan, phone, Email, Manager);
+            contr.InsertHotel(Nama_Hotel.Text, Kecamatanbox.Text, Road.Text, Hp.Text, Emails.Text, Managers.Text);
             MessageBox.Show("Register Success", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Hide();
             HotelWindow hasil = new HotelWindow();
@@ -83,9 +93,7 @@ namespace WPF_HotelAndFlight
         private void savefkamar_Click(object sender, RoutedEventArgs e)
         {
             A_Roomtype_FacilityController contr = new A_Roomtype_FacilityController();
-            int H_FacilityID = Convert.ToInt32(Fkamarbox.SelectedValue);
-            int H_RoomtypeID = Convert.ToInt32(Nkamarbox.SelectedValue);
-            contr.InsertFasilitaskamar(H_FacilityID, H_RoomtypeID);
+            contr.InsertFasilitaskamar(Convert.ToInt32(Nkamarbox.SelectedValue), Convert.ToInt32(Fkamarbox.SelectedValue));
             MessageBox.Show("Register Success", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Hide();
             HotelWindow hasil = new HotelWindow();
@@ -95,13 +103,7 @@ namespace WPF_HotelAndFlight
         private void savetipe_Click(object sender, RoutedEventArgs e)
         {
             A_Hotel_RoomtypeController contr = new A_Hotel_RoomtypeController();
-            int Harga = Convert.ToInt32(Hargatext.Text);
-            int Stok = Convert.ToInt32(stoktext.Text);
-            string Gambar = Fototext.Text;
-            string Deskripsi = Deskripsitext.Text;
-            int H_RoomtypeID = Convert.ToInt32(Id_Tipekamarbox.SelectedValue);
-            int H_HotelID = Convert.ToInt32(Id_Hotelbox.SelectedValue);
-            contr.InsertTipeHotel(Harga, Stok, Gambar, Deskripsi, H_RoomtypeID, H_HotelID);
+            contr.InsertTipeHotel(Convert.ToInt32(Hargatext.Text), Convert.ToInt32(stoktext.Text), Fototext.Text, Deskripsitext.Text, Convert.ToInt32(Id_Tipekamarbox.SelectedValue), Convert.ToInt32(Id_Hotelbox.SelectedValue));
             MessageBox.Show("Register Success", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Hide();
             HotelWindow hasil = new HotelWindow();
@@ -111,9 +113,7 @@ namespace WPF_HotelAndFlight
         private void savebooking_Click(object sender, RoutedEventArgs e)
         {
             A_BookingdateController contr = new A_BookingdateController();
-            DateTime Booking_date = Convert.ToDateTime(Tglbooking.Text);
-            int HF_User = Convert.ToInt32(Iduser.SelectedValue);
-            contr.InsertBookingDate(Booking_date, HF_User);
+            contr.InsertBookingDate(Convert.ToDateTime(Tglbooking.Text), Convert.ToInt32(Iduser.SelectedValue));
             MessageBox.Show("Register Success", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Hide();
             HotelWindow hasil = new HotelWindow();
@@ -137,22 +137,16 @@ namespace WPF_HotelAndFlight
         private void savecust_Click(object sender, RoutedEventArgs e)
         {
             UserController contr = new UserController();
-            string Customer_name = Cust_name.Text;
-            string User_name = Username.Text;
-            string Email_cust = Emailcust.Text;
-            string Loc = Locationcust.Text;
-            string Password = Passwordcust.Text;
-            int Roles = Convert.ToInt16(Roles_id.SelectedValue);
-            string Gender = getJenisKelaminUser();
-            contr.InsertUser(Customer_name, User_name, Email_cust, Loc, Password, Roles, Gender);
+            contr.InsertUser(Cust_name.Text, Username.Text, Emailcust.Text, Locationcust.Text, Passwordcust.Text, Convert.ToInt16(Roles_id.SelectedValue), getJenisKelaminUser());
             MessageBox.Show("Register Success", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Hide();
             HotelWindow hasil = new HotelWindow();
             hasil.ShowDialog();
         }
+        #endregion
 
 
-        //=========================================View===================================================
+        #region View
         private void viewHotelGrid(DataGrid DG)
         {
             DG.ItemsSource = _context.H_Hotel.OrderBy(x => x.Id).ToList();
@@ -162,14 +156,11 @@ namespace WPF_HotelAndFlight
         {
             DG.ItemsSource = _context.HF_User.OrderBy(x => x.Id).ToList();
         }
-        /*private void viewFkamarGrid(DataGrid DG)
-        {
-            var Fkamar = from r in _context.H_Roomtype.ToList() join rf in _context.H_Roomtype_Facility.ToList()
-                         on r.Id equals rf.H_RoomtypeID join f in _context.H_Facility.ToList()
-                         on rf.H_FacilityID equals f.Id
-                         select r;
-            DG.ItemsSource = Fkamar.ToList();
-        }*/
+        //private void viewFkamarGrid(DataGrid DG)
+        //{
+        //    var get = _context.H_Roomtype_Facility.Include("H_Facility");
+        //    get.H_Facility.Name;
+        //}
         private void viewFkamarGrid(DataGrid DG)
         {
             DG.ItemsSource = _context.H_Roomtype_Facility.OrderBy(x => x.Id).ToList();
@@ -179,25 +170,9 @@ namespace WPF_HotelAndFlight
         {
             DG.ItemsSource = _context.H_Hotel_Roomtype.OrderBy(x => x.Id).ToList();
         }
+        #endregion
 
-        private void viewTglBookingGrid(DataGrid DG)
-        {
-            DG.ItemsSource = _context.HF_Booking.OrderBy(x => x.Id).ToList();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            viewCustomerGrid(CustomerGrid);
-            viewHotelGrid(HotelGrid);
-            LoadIdComboBox();
-            viewFkamarGrid(FkamarGrid);
-            LoadIdTRComboBox();
-            viewHotelTypeGrid(TypeHotelGrid);
-            LoadIduser();
-            viewTglBookingGrid(TglBookingGrid);
-            LoadIdrole();
-        }
-
+        #region searchID
         private H_Hotel SearchByIdHotel(int id)
         {
             var dataid = _context.H_Hotel.Find(id);
@@ -230,6 +205,30 @@ namespace WPF_HotelAndFlight
 
             return dataid;
         }
+        #endregion
+
+        #region SelectionChanged
+        private void Provinsibox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string x =Convert.ToString(Provinsibox.SelectedValue);
+            Kabupatenbox.DisplayMemberPath = "name";
+            Kabupatenbox.SelectedValuePath = "id";
+            Kabupatenbox.ItemsSource = _context.regencies.Where(a => a.province_id == x).ToList();
+        }
+        private void Kabupatenbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string x = Convert.ToString(Kabupatenbox.SelectedValue);
+            Kecamatanbox.DisplayMemberPath = "name";
+            Kecamatanbox.SelectedValuePath = "id";
+            Kecamatanbox.ItemsSource = _context.districts.Where(b => b.regency_id == x).ToList();
+        }
+        private void Kecamatanbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string x = Convert.ToString(Kecamatanbox.SelectedValue);
+            Kelurahanbox.DisplayMemberPath = "name";
+            Kelurahanbox.SelectedValuePath = "id";
+            Kelurahanbox.ItemsSource = _context.villages.Where(c => c.district_id == x).ToList();
+        }
 
         private void HotelGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -242,19 +241,15 @@ namespace WPF_HotelAndFlight
                 string data2 = (HotelGrid.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
                 Nama_Hotel.Text = data2;
                 string data3 = (HotelGrid.SelectedCells[2].Column.GetCellContent(item) as TextBlock).Text;
-                Alamat.Text = data3;
+                Kecamatanbox.Text = data3;
                 string data4 = (HotelGrid.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text;
-                Kota.Text = data4;
+                Road.Text = data4;
                 string data5 = (HotelGrid.SelectedCells[4].Column.GetCellContent(item) as TextBlock).Text;
-                Kec.Text = data5;
+                Hp.Text = data5;
                 string data6 = (HotelGrid.SelectedCells[5].Column.GetCellContent(item) as TextBlock).Text;
-                Road.Text = data6;
+                Emails.Text = data6;
                 string data7 = (HotelGrid.SelectedCells[6].Column.GetCellContent(item) as TextBlock).Text;
-                Hp.Text = data7;
-                string data8 = (HotelGrid.SelectedCells[7].Column.GetCellContent(item) as TextBlock).Text;
-                Emails.Text = data8;
-                string data9 = (HotelGrid.SelectedCells[8].Column.GetCellContent(item) as TextBlock).Text;
-                Managers.Text = data9;
+                Managers.Text = data7;
             }
             catch (Exception ex)
             {
@@ -327,89 +322,81 @@ namespace WPF_HotelAndFlight
             }
         }
 
-        //===================================Update=================================================================
+        private void CustomerGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //try
+            //{
+            //    object item = CustomerGrid.SelectedItem;
+
+            //    string data1 = (CustomerGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+            //    Id_Customer.Text = data1;
+            //    string data2 = (CustomerGrid.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
+            //    Cust_name.Text = data2;
+            //    string data3 = (CustomerGrid.SelectedCells[2].Column.GetCellContent(item) as TextBlock).Text;
+            //    Username.Text = data3;
+            //    string data4 = (CustomerGrid.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text;
+            //    Emailcust.Text = data4;
+            //    string data5 = (CustomerGrid.SelectedCells[4].Column.GetCellContent(item) as TextBlock).Text;
+            //    Locationcust.Text = data4;
+            //    string data6 = (CustomerGrid.SelectedCells[6].Column.GetCellContent(item) as TextBlock).Text;
+            //    Roles_id.Text = data6;
+            //    string data7 = (CustomerGrid.SelectedCells[8].Column.GetCellContent(item) as TextBlock).Text;
+            //}
+            //catch (Exception ex)
+            //{
+            //    System.Console.Write(ex.InnerException);
+            //}
+        }
+        #endregion
+
+        #region Update
         private void update_Click(object sender, RoutedEventArgs e)
         {
-            object item = HotelGrid.SelectedItem;
-            string temp_id = (HotelGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
-
-            int id = Convert.ToInt32(temp_id);
+            int id = Convert.ToInt32(HotelId.Text);
 
             H_Hotel datax = SearchByIdHotel(id);
             datax.Hotel_Name = Nama_Hotel.Text;
-            datax.Alamat = Alamat.Text;
-            datax.Kota = Kota.Text;
-            datax.Kecamatan = Kec.Text;
+            datax.VillagesID = Kecamatanbox.Text;
             datax.Jalan = Road.Text;
             datax.Phone = Hp.Text;
             datax.Email = Emails.Text;
             datax.Manager = Managers.Text;
-
-            try
-            {
-                _context.Entry(datax).State = System.Data.Entity.EntityState.Modified;
-                _context.SaveChanges();
-                clearhotel();
-                this.viewHotelGrid(HotelGrid);
-                MessageBox.Show("Update Success !", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (DbEntityValidationException ex)
-            {
-                foreach (var eve in ex.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
-            }
         }
 
         private void updatefkamar_Click(object sender, RoutedEventArgs e)
         {
-            object item = FkamarGrid.SelectedItem;
-            string temp_id = (FkamarGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
-
-            int id = Convert.ToInt32(temp_id);
-
+            int id = Convert.ToInt32(Id_Tipehotel.Text);
             H_Roomtype_Facility datax = SearchByIdFkamar(id);
             datax.H_FacilityID =Convert.ToInt32(Fkamarbox.SelectedValue);
             datax.H_RoomtypeID = Convert.ToInt32(Nkamarbox.SelectedValue);            
 
-            try
-            {
-                _context.Entry(datax).State = System.Data.Entity.EntityState.Modified;
-                _context.SaveChanges();
-                clearhotel();
-                this.viewFkamarGrid(FkamarGrid);
-                MessageBox.Show("Update Success !", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (DbEntityValidationException ex)
-            {
-                foreach (var eve in ex.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
-            }
+            //try
+            //{
+            //    _context.Entry(datax).State = System.Data.Entity.EntityState.Modified;
+            //    _context.SaveChanges();
+            //    clearhotel();
+            //    this.viewFkamarGrid(FkamarGrid);
+            //    MessageBox.Show("Update Success !", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            //}
+            //catch (DbEntityValidationException ex)
+            //{
+            //    foreach (var eve in ex.EntityValidationErrors)
+            //    {
+            //        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+            //            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+            //        foreach (var ve in eve.ValidationErrors)
+            //        {
+            //            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+            //                ve.PropertyName, ve.ErrorMessage);
+            //        }
+            //    }
+            //    throw;
+            //}
         }
 
         private void updatetipe_Click(object sender, RoutedEventArgs e)
         {
-            object item = TypeHotelGrid.SelectedItem;
-            string temp_id = (TypeHotelGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
-
-            int id = Convert.ToInt32(temp_id);
+            int id = Convert.ToInt32(Id_Tipehotel.Text);
 
             H_Hotel_Roomtype datax = SearchByIdTipehotel(id);
             datax.Price = Convert.ToInt32(Hargatext.Text);
@@ -418,32 +405,20 @@ namespace WPF_HotelAndFlight
             datax.Description = Deskripsitext.Text;
             datax.H_HotelID = Convert.ToInt32(Id_Hotelbox.SelectedValue);
             datax.H_RoomtypeID = Convert.ToInt32(Id_Tipekamarbox.SelectedValue);
-
-            try
-            {
-                _context.Entry(datax).State = System.Data.Entity.EntityState.Modified;
-                _context.SaveChanges();
-                clearhotel();
-                this.viewHotelTypeGrid(TypeHotelGrid);
-                MessageBox.Show("Update Success !", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (DbEntityValidationException ex)
-            {
-                foreach (var eve in ex.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
-            }
         }
 
-        //=======================================Delete=================================================================================
+        private void updatebooking_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void updatecust_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Hapus
         private void HapusButton_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Are You Sure ?", "Information", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
@@ -482,8 +457,32 @@ namespace WPF_HotelAndFlight
             }
         }
 
-        
+        private void hapustipe_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Are You Sure ?", "Information", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+            {
+                object item = TypeHotelGrid.SelectedItem;
+                string temp_id = (TypeHotelGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                int id = Convert.ToInt32(temp_id);
+                H_Hotel_Roomtype datadel = SearchByIdTipehotel(id);
+                _context.Entry(datadel).State = System.Data.Entity.EntityState.Deleted;
+                _context.SaveChanges();
+                clearhotel();
+                this.viewHotelTypeGrid(TypeHotelGrid);
+            }
+            else
+            {
 
+            }
+        }
+
+        private void Hapuscust_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region combobox
         public void LoadIdComboBox()
         {
             Fkamarbox.DisplayMemberPath = "Facllity_Name";
@@ -519,39 +518,6 @@ namespace WPF_HotelAndFlight
             Roles_id.SelectedValuePath = "Id";
             Roles_id.ItemsSource = _context.Roles.ToList();
         }
-
-        private void hapustipe_Click(object sender, RoutedEventArgs e)
-        {
-            if (MessageBox.Show("Are You Sure ?", "Information", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
-            {
-                object item = TypeHotelGrid.SelectedItem;
-                string temp_id = (TypeHotelGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
-                int id = Convert.ToInt32(temp_id);
-                H_Hotel_Roomtype datadel = SearchByIdTipehotel(id);
-                _context.Entry(datadel).State = System.Data.Entity.EntityState.Deleted;
-                _context.SaveChanges();
-                clearhotel();
-                this.viewHotelTypeGrid(TypeHotelGrid);
-            }
-            else
-            {
-
-            }
-        }
-
-        private void updatebooking_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void updatecust_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Hapuscust_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

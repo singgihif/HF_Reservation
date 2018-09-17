@@ -13,10 +13,10 @@ namespace WPF_HotelAndFlight.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Flight_ReservationEntities2 : DbContext
+    public partial class Flight_ReservationEntities5 : DbContext
     {
-        public Flight_ReservationEntities2()
-            : base("name=Flight_ReservationEntities2")
+        public Flight_ReservationEntities5()
+            : base("name=Flight_ReservationEntities5")
         {
         }
     
@@ -25,6 +25,7 @@ namespace WPF_HotelAndFlight.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<district> districts { get; set; }
         public virtual DbSet<F_Airport> F_Airport { get; set; }
         public virtual DbSet<F_Coupon> F_Coupon { get; set; }
         public virtual DbSet<F_DetailBooking> F_DetailBooking { get; set; }
@@ -37,11 +38,13 @@ namespace WPF_HotelAndFlight.Model
         public virtual DbSet<H_Facility> H_Facility { get; set; }
         public virtual DbSet<H_Hotel> H_Hotel { get; set; }
         public virtual DbSet<H_Hotel_Roomtype> H_Hotel_Roomtype { get; set; }
-        public virtual DbSet<H_Payment> H_Payment { get; set; }
         public virtual DbSet<H_Roomtype> H_Roomtype { get; set; }
         public virtual DbSet<H_Roomtype_Facility> H_Roomtype_Facility { get; set; }
-        public virtual DbSet<HF_Booking> HF_Booking { get; set; }
+        public virtual DbSet<HF_Payment> HF_Payment { get; set; }
         public virtual DbSet<HF_User> HF_User { get; set; }
+        public virtual DbSet<province> provinces { get; set; }
+        public virtual DbSet<regency> regencies { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<village> villages { get; set; }
     }
 }
